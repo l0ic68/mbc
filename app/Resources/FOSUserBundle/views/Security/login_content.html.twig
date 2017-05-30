@@ -1,0 +1,45 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheets %}
+<link href="{{ asset('css/style-resplog.css') }}" rel="stylesheet">
+{% endblock %}
+ <!-- Add New -->
+<div class="bgflou">
+<div class="containerperso marg-center z-depth-2">
+    <div class="section">
+        <div class="row">
+            <h4 class="center degrade2 ">Connexion</h4>
+                    <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal" id="contact_form">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+
+                        <fieldset>
+                            <!-- Text input Email -->
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix degrade4">email</i>
+                                <input  name="_username" id="email" type="email" class="validate form-control" value="{{ last_username }}">
+                                <label for="email" data-error="wrong" data-success="right">{{ 'Email'|trans }}</label>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix degrade4">vpn_key</i>
+                                <input name="_password" id="icon_prefix" type="password" class="form-control">
+                                <label for="icon_prefix">{{ 'Password'|trans }}</label>
+                            </div>
+                                            {#<input  name="_password" type="password" placeholder="••••••••" id="password">#}
+                            <button class="marg-center2 btn waves-effect waves-light degrade3 z-depth-2" type="submit" value="{{ 'security.login.submit'|trans }}" name="action">se connecter
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </fieldset>
+                    </form>
+            {% if error %}
+                <div class="padder-t2 padder-b2 col-10 col-sm-8 col-md-6 col-lg-4 offset-lg-4 offset-md-3 offset-sm-2 offset-1 error">{{ error.message|trans({},'messages') }}</div>
+            {% endif %}
+                    <div class="col-md-4 col-lg-4 offset-0 offset-lg-4 offset-md-4 horiz-divider  padder-t2"></div>
+                    <p class="col-md-4 col-lg-4 offset-0 offset-lg-4 offset-md-4 padder-t2">Forgot password ? <a href="{{ path('fos_user_resetting_request') }}">Reset</a></p>
+                    <p class="col-md-4 col-lg-4 offset-0 offset-lg-4 offset-md-4">Don't have an account ? <a href="{{ path('fos_user_registration_register') }}">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,32 @@
+main_admin_offres:
+    resource: "@MainBundle/Resources/config/Adminrouting/offres.yml"
+    prefix:   /admin/offres
+
+main_homepage:
+    path:     /
+    defaults: { _controller: MainBundle:Default:index }
+
+contact:
+    path:     /contact
+    defaults: { _controller: MainBundle:Default:contact }
+    requirements:
+            _method:  GET|POST
+search:
+    path:     /search
+    defaults: { _controller: MainBundle:Search:searchTreat }
+
+offres:
+    path:     /offres
+    defaults: { _controller: MainBundle:Offres:offres }
+
+offre:
+    path:     /offre/{id}
+    defaults: { _controller: MainBundle:Offres:offre }
+
+searchOffres:
+    pattern: /searchOffres
+    defaults: { _controller: MainBundle:Offres:searchoffres }
+
+mentions_legales:
+    path:     /mentions_legales
+    defaults: { _controller: MainBundle:Default:mentions_legales }   

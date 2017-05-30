@@ -1,0 +1,105 @@
+.color{
+    background: -webkit-gradient(linear,left bottom,right top, from(#413d50),to(#12cd36));
+
+}
+nav .input-field input {
+    height: 3rem;
+    font-size: 1.2rem;
+    border: none;
+}
+
+nav{
+	background: rgba(212, 106, 39, 0.77);
+}
+#placeholder-navbar{
+	background: rgba(212, 106, 39, 0.77)!important;
+}
+.gallery .gallery-action {
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    right: 0%;
+    z-index: 2;
+    top: 439px!important;
+}
+
+.pad{
+
+    padding: 30px 0!important;
+}
+.color-red{
+	    color: #a62626;
+}
+
+.color-green{
+	    color: #26a626;
+}
+.degrade2 {
+    font-size: 30px;
+    font-weight: 900;
+    background: -webkit-gradient(linear,left bottom,right top, from(#413d50),to(#12cd36));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+.marg-bot{
+	margin-left: 30px;
+	    margin-bottom: 20px;
+}
+ input:not([type]):disabled, input:not([type])[readonly="readonly"], input[type=text]:disabled, input[type=text][readonly="readonly"], input[type=password]:disabled, input[type=password][readonly="readonly"], input[type=email]:disabled, input[type=email][readonly="readonly"], input[type=url]:disabled, input[type=url][readonly="readonly"], input[type=time]:disabled, input[type=time][readonly="readonly"], input[type=date]:disabled, input[type=date][readonly="readonly"], input[type=datetime]:disabled, input[type=datetime][readonly="readonly"], input[type=datetime-local]:disabled, input[type=datetime-local][readonly="readonly"], input[type=tel]:disabled, input[type=tel][readonly="readonly"], input[type=number]:disabled, input[type=number][readonly="readonly"], input[type=search]:disabled, input[type=search][readonly="readonly"], textarea.materialize-textarea:disabled, textarea.materialize-textarea[readonly="readonly"] {
+    color: rgb(130, 0, 0);
+    border-bottom: 1px dotted rgb(31, 185, 4);
+}
+
+.switch label .lever {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 15px;
+    background-color: rgba(38, 166, 38, 0.67);
+    border-radius: 15px;
+    margin-right: 10px;
+    transition: background 0.3s ease;
+    vertical-align: middle;
+    margin: 0 16px;
+}
+.switch label .lever:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    background-color: #26a626;
+    border-radius: 21px;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+    left: -5px;
+    top: -3px;
+    transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
+}
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #a62626;
+    left: 24px;
+}
+
+.switch label input[type=checkbox]:checked + .lever {
+    background-color:rgba(166, 38, 38, 0.68);
+}
+
+textarea.materialize-textarea {
+    overflow-y: hidden;
+    padding: 0!important;
+    resize: none;
+    min-height: 3rem;
+}
+
+.offsetkiwi{
+    margin-top: 80px;
+}
+
+
+
+
+
+
+

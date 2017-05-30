@@ -1,0 +1,53 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <h1>Offres list</h1>
+
+    <table class="striped responsive-table centered highlight">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Date_offre</th>
+                <th>Date_offre1</th>
+                <th>Date_offre2</th>
+                <th>Duration</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres %}
+            <tr>
+                <td><a href="{{ path('admin_offres_show', { 'id': offre.id }) }}">{{ offre.id }}</a></td>
+                <td>{{ offre.description }}</td>
+                <td>{{ offre.name }}</td>
+                <td>{{ offre.price }}</td>
+                <td>{% if offre.dateoffre %}{{ offre.dateoffre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if offre.dateoffre1 %}{{ offre.dateoffre1|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if offre.dateoffre2 %}{{ offre.dateoffre2|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ offre.duration }}</td>
+                <td>{{ offre.location }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_offres_show', { 'id': offre.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_offres_edit', { 'id': offre.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_offres_new') }}">Create a new offre</a>
+        </li>
+    </ul>
+{% endblock %}

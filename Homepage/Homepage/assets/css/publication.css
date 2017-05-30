@@ -1,0 +1,50 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+body{
+    background-color: #e9ebee;
+}
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+.drop-width{
+	width: 150px !important;
+}
+
+.img-back{
+	width: 1890px;
+
+}
+.parallax-container2 {
+      height: 300px!important;
+    }
+     
+.parallax img {
+    bottom: 166px;
+}
+.marg-titre{
+    position: absolute;
+    margin-top: -200px;
+    margin-left: 100px!important;
+}
+.rbga{
+    background:-webkit-gradient(linear,left bottom,right top,from(rgba(138, 150, 191, 0.57)),to(rgba(18, 205, 140, 0.48)))
+
+}
+.marg-le{
+    margin-left: 20px;
+}
+.colo-gray{
+    color: #606060;
+}
+img.responsive-img{
+   margin: 6px 0;
+   width: 100%;
+}

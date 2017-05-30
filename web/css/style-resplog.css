@@ -1,0 +1,72 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+.degrade3 {
+    
+    background: -webkit-gradient(linear,left bottom,right top, from(#413d50),to(#12cd36));
+}
+.degrade2 {
+    font-size: 50px;
+    background: -webkit-gradient(linear,left bottom,right top, from(#413d50),to(#12cd36));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.degrade4 {
+    font-size: 50px;
+    background: #413d50;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.marg-center {
+    background: -webkit-gradient(linear,left bottom,right top, from(rgba(255, 255, 255, 0.35)),to(rgba(236, 197, 157, 0.43)));
+    margin: 16vh auto;
+    margin-top: 0px!important;
+    padding: 20px;
+}
+.background-img{
+	background: url(../background-flou.png);
+}
+.marg-center2{
+	margin-left: 25%;
+}
+
+.input-field label {
+     color: #fff;
+   }
+
+   .input-field input[type=text]:focus + label {
+     color: #066905;
+   }
+
+    .input-field input[type=text]:focus {
+     border-bottom: 1px solid #066905;
+     box-shadow: 0 1px 0 0 #066905;
+   }
+.bgflou{
+    margin-top: -17px;
+    width: 100%;
+    height: 200vh;
+    background-image: url("background-flou.png");
+    position: fixed;
+}
+
+.containerperso{
+    width: 40%;
+}
+
+@media screen and (max-width: 640px) {
+  .containerperso{
+    width: 100%;
+}
+}

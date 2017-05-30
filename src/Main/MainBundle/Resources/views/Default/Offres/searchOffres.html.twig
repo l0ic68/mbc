@@ -1,0 +1,128 @@
+<div class="gallery row">
+
+    <!-- Dropdown Structure -->
+
+    {% for offre in offres %}
+        <div class="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
+            <div class="gallery-curve-wrapper">
+                <a class="gallery-cover gray">
+                    {#<img class="responsive-img " src="/monbatiment/web{{ asset(offre.media.path) }}" alt="placeholder">#}
+                    <img class="responsive-img " src="{{ asset(offre.media.path) }}" alt="placeholder">
+                </a>
+                <div class="gallery-header">
+                    <span>{{ offre.name }}</span>
+                </div>
+                <div class="gallery-body">
+                    <div class="title-wrapper">
+                        <h3 class="degrade2">{{ offre.name }}</h3>
+                        <span class="price">{{ offre.name }}</span>
+                    </div>
+                    <div class="gallery-action fixed-action-btn horizontal click-to-toggle" >
+                        <a class="btn-floating btn-large waves-effect waves-light pulse"><i class="material-icons">info_outline</i></a>
+
+                        <ul>
+
+                            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                            <li class="col m10 center ">
+                                <div class="col m12 white z-depth-2 pad">
+                                    <div class="col m12"><a href="#!">41 rue de baldenheim, Wittisheim 67820</a></div>
+                                    <div class="col m12"><a href="#!">06 33 81 67 45</a></div>
+                                    <div class="col m12"><a href="#!">l.waamh@gmail.com</a></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <p class="description">
+                        {{ offre.description }}
+
+                    <div class="carousel-wrapper">
+                        <div class="carousel">
+                            <a class="carousel-item " href="#one!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                            <a class="carousel-item " href="#two!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                            <a class="carousel-item " href="#three!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                            <a class="carousel-item " href="#four!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                            <a class="carousel-item " href="#five!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                        </div>
+                    </div>
+
+                    <span class="col m12 center degrade2">
+                 Information
+                </span>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input disabled value="41 rue de baldenheim 67820 Wittisheim" id="disabled" type="text" class="validate">
+                            <label for="disabled">Adresse</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input disabled value="06 33 81 67 45" id="disabled" type="text" class="validate">
+                            <label for="disabled">Téléphone</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input disabled value="l.waamh@gmail.com" id="disabled" type="text" class="validate">
+                            <label for="disabled">Mail</label>
+                        </div>
+                    </div>
+                    <span class="col m12 center degrade2">
+                  Partie note et commentaire
+                </span>
+
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <img src="{{ asset('img/ANONYMAT-DU-WEB-.jpg')}}" alt="" class="circle">
+                            <span class="title">Nom</span>
+                            <p>Super entreprise, boulot nikel wesh
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons color-green">thumb_up</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <img src="{{ asset('img/ANONYMAT-DU-WEB-.jpg')}}" alt="" class="circle">
+                            <span class="title">Nom</span>
+                            <p>Super entreprise, boulot nikel wesh
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons color-green">thumb_up</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <img src="{{ asset('img/ANONYMAT-DU-WEB-.jpg')}}" alt="" class="circle">
+                            <span class="title">Nom</span>
+                            <p>c'est de la merde</p>
+                            <a href="#!" class="secondary-content"><i class="material-icons color-red">thumb_down</i></a>
+                        </li>
+
+                    </ul>
+                    <span class="col m12 center degrade2">
+                  Ajouter un commentaire
+                </span>
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="switch marg-bot">
+                                    <label>
+                                        <i class="material-icons color-green">thumb_up</i>
+                                        <input type="checkbox">
+                                        <span class="lever"></span>
+                                        <i class="material-icons color-red">thumb_down</i>
+                                    </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix degrade2">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea" data-length="120"></textarea>
+                                    <label for="icon_prefix2">First Name</label>
+                                </div>
+                                <button class="btn waves-effect waves-light color" type="submit" name="action">Envoyer
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{{ asset ('js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset ('js/masonry.pkgd.min.js') }}"></script>
+<script src="{{ asset ('js/color-thief.min.js') }}"></script>
+<script src="{{ asset ('js/galleryExpand.js') }}"></script>
+<script src="{{ asset ('js/init.js') }}"></script>

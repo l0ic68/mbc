@@ -1,0 +1,24 @@
+admin_offres_index:
+    path:     /
+    defaults: { _controller: "MainBundle:OffresAdmin:index" }
+    methods:  GET
+
+admin_offres_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:OffresAdmin:show" }
+    methods:  GET
+
+admin_offres_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:OffresAdmin:new" }
+    methods:  [GET, POST]
+
+admin_offres_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:OffresAdmin:edit" }
+    methods:  [GET, POST]
+
+admin_offres_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:OffresAdmin:delete" }
+    methods:  DELETE
