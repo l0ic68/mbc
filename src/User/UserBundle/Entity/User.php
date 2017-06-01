@@ -27,15 +27,15 @@ class User extends BaseUser
      */
     public $media;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prenom;
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     */
+//    private $nom;
+//
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     */
+//    private $prenom;
 
     public function __construct()
     {
@@ -43,53 +43,53 @@ class User extends BaseUser
         // your own logic
     }
 
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Users
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set prenom
-     *
-     * @param string $prenom
-     *
-     * @return Users
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    /**
-     * Get prenom
-     *
-     * @return string
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
+//    /**
+//     * Set nom
+//     *
+//     * @param string $nom
+//     *
+//     * @return Users
+//     */
+//    public function setNom($nom)
+//    {
+//        $this->nom = $nom;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get nom
+//     *
+//     * @return string
+//     */
+//    public function getNom()
+//    {
+//        return $this->nom;
+//    }
+//
+//    /**
+//     * Set prenom
+//     *
+//     * @param string $prenom
+//     *
+//     * @return Users
+//     */
+//    public function setPrenom($prenom)
+//    {
+//        $this->prenom = $prenom;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get prenom
+//     *
+//     * @return string
+//     */
+//    public function getPrenom()
+//    {
+//        return $this->prenom;
+//    }
     /*
      * Si tu veux enlever username
      */

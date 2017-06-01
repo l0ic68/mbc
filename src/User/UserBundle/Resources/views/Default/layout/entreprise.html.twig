@@ -1,0 +1,10 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+    <form action="{{ path('inscription_entreprise') }}" {{ form_enctype(form) }} method="POST">
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+{% endblock %}
+

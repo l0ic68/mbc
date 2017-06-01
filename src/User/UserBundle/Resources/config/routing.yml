@@ -1,1 +1,7 @@
+inscription_candidat:
+    path:     /candidat
+    defaults: { _controller: UserBundle:Default:candidat }
 
+inscription_entreprise:
+    path:     /entreprise
+    defaults: { _controller: UserBundle:Default:entreprise }

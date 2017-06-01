@@ -13,12 +13,12 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', 'text', array('label' => 'Last name',
-                'attr' => array('class' => 'input-medium search-query form-control',
-                    'placeholder' => 'Last name',)))
-            ->add('prenom', 'text', array('label' => 'First name',
-                'attr' => array('class' => 'input-medium search-query form-control',
-                    'placeholder' => 'First name',)))
+//            ->add('nom', 'text', array('label' => 'Last name',
+//                'attr' => array('class' => 'input-medium search-query form-control',
+//                    'placeholder' => 'Last name',)))
+//            ->add('prenom', 'text', array('label' => 'First name',
+//                'attr' => array('class' => 'input-medium search-query form-control',
+//                    'placeholder' => 'First name',)))
             // ->add('username', null, array('label' => 'username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'email',
                 'attr' => array('class' => 'input-medium search-query form-control',
