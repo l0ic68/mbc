@@ -30,3 +30,7 @@ searchOffres:
 mentions_legales:
     path:     /mentions_legales
     defaults: { _controller: MainBundle:Default:mentions_legales }   
+
+conseils:
+    path:     /conseils/{id}
+    defaults: { _controller: MainBundle:Tips:tip }   
