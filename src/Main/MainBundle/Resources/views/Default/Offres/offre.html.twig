@@ -1,312 +1,52 @@
 {% extends "::layout/layout.html.twig" %}
-{% block body %}
-    <!-- News and offres Article -->
-    <div class="container white">
-        <div class="row">
-            <div class="container white percent100">
-                <div class="row col-lg-12 right-15">
-                    <div class="col-lg-6">
-                        <h1 class="padder-t2">{{ offre.name }}</h1>
-                        <h3 class=""><i>{{ offre.dateoffre|date() }}</i></h3>
-                    </div>
-                    <div class="col-lg-6 padder-t2 right-15">
-                        <div class="float-right vert-midd-parent">
-                            <div class="vert-midd btn-group">
-                                {% include '::ModulesUsed/shareBtn.html.twig' %}
-                            </div>
-                        </div>
-                        <div class="float-right vert-midd-parent padder-lr">
-                            <div class="vert-midd">
-                                <button id="down" class="btn-danger vote">
-                                    <i id="{{offre.id}}" class="fa fa-arrow-circle-o-down fa-2x" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="float-right vert-midd-parent">
-                            <div class="vert-midd">
-                                <button id="up" class="btn-danger vote">
-                                    <i id="{{offre.id}}" class="fa fa-arrow-circle-o-up fa-2x" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="float-right vert-midd-parent padder-lr">
-                            <div class="float-right vert-midd-parent padder-lr">
-                                {% for upvote in upvotes %}
-                                <h5 id="TVote" class="vert-midd">{{ upvote.total }}</h5>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="horiz-divider"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container white">
-                <div class="col-lg-12">
-                    <img class="d-block img-fluid padder-t2" src="{{asset(offre.media.path)}}">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container white">
-                <div class="col-lg-12">
-                    <div class="carousel slide" id="myCarousel" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <!-- first one same as the offre image -->
-                            <div class="carousel-item active">
-                                <div class="col-lg-4 col-4 col-md-4 col-sm-4 lr-15">
-                                    <a href=""><img src="{{asset(offre.media.path)}}" class="img-fluid"></a>
-                                </div>
-                            </div>
-
-                            <!-- Times next blocks the number of the images -->
-                            {% for media in medias %}
-                            <div class="carousel-item">
-                                <div class="col-lg-4 col-4 col-md-4 col-sm-4 lr-15">
-                                    <a href=""><img src="{{ asset(offre.media.path) }}" class="img-fluid"></a>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container white">
-                <div class="col-lg-12">
-                    <h4 class="padder-t2 text-justify">{{ offre.description }}</h4>
-                    <div class="row col-lg-12">
-                        <h5 class="col-lg-12 padder-t2">By {{ offre.author.nom }} {{ offre.author.prenom }}</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- if offre ended -->
-        <div class="row">
-            <div class="container white percent100">
-                <div class="col-lg-12">
-                    <div class="padder-t2">
-                        <h1>Add an image</h1>
-                        <div class="horiz-divider"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container white">
-                <div class="col-lg-12">
-                    <div class="padder-t padder-b">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-6 col-sm-4 col-md-4 col-lg-4 offset-3 offset-sm-4 offset-md-4 offset-lg-4 inputGroupContainer">
-                                    {{form_start(form_Media) }}
-                                    <div class="input-group">
-                                        <span class="span-form padder-t">
-                                            <label id="upload-btn" class="custom-file">
-                                                <span class="btn btn-primary raised btn-inform">
-                                                        {{ form_widget(form_Media, { 'attr': {'class': 'custom-file-input', 'placeholder': 'change'} }) }}Your image <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                                </span>
-                                            </label>
-                                        </span>
-                                        <button type="submit" class="btn btn-danger raised" >Send <i class="fa fa-paper-plane"></i></button>
-                                    </div>
-                                    {{ form_end(form_Media) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container white percent100">
-                <div class="col-lg-12">
-                    <div class="padder-t2">
-                        <h1>Would you participate? Subscribe to the offre!</h1>
-                        <div class="horiz-divider"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container white">
-                <div class="col-lg-12">
-                    <div class="padder-t2">
-                        <!-- form subcription to the offre -->
-                        <div class="col-lg-12">
-                            <div class="offset-0 offset-lg-4 offset-md-3 offset-sm-2 col-12 col-sm-8 col-md-6 col-lg-4">
-                                <div class="vert-midd">
-                                    <button id="Firstdate" class="btn btn-danger raised vote" data-toggle="modal" data-target="#subModal">
-                                        <i id="{{offre.id}}" class="fa fa-check-square-o" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="gray-form">{{offre.dateoffre | date()}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="offset-0 offset-lg-4 offset-md-3 offset-sm-2 col-12 col-sm-8 col-md-6 col-lg-4">
-                                <div class="vert-midd">
-                                    <button id="Seconddate" class="btn btn-danger raised vote" data-toggle="modal" data-target="#subModal">
-                                        <i id="{{offre.id}}" class="fa fa-check-square-o" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="gray-form">{{offre.dateoffre1 | date()}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="offset-0 offset-lg-4 offset-md-3 offset-sm-2 col-12 col-sm-8 col-md-6 col-lg-4">
-                                <div class="vert-midd">
-                                    <button id="Thirddate" class="btn btn-danger raised vote" data-toggle="modal" data-target="#subModal">
-                                        <i id="{{offre.id}}" class="fa fa-check-square-o" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="gray-form">{{offre.dateoffre2 | date()}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container white percent100">
-                <div class="col-lg-12">
-                    <div class="padder-t2">
-                        <h1>Comment Section</h1>
-                        <div class="horiz-divider"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container white">
-                <div class="col-lg-12">
-                    <ul class="comment-section">
-                        <li class="write-new">
-                            <input class="form-control search" type="text" placeholder="Commentaire" id="{{ offre.id }}">
-                        </li>
-                        <div id="comments"></div>
-                        {% for comment in comments %}
-                            <li class="comment user-comment">
-
-                                <div class="info">
-                                    <a href="#">{{ comment.user.prenom }} {{ comment.user.nom }}</a>
-                                    <span>{{ comment.datecomment | date() }}</span>
-                                </div>
-
-                                <a class="avatar" href="#">
-                                </a>
-
-                                <p>{{ comment.comment }}</p>
-
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="subModal" tabindex="-1" role="dialog" aria-labelledby="subModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    You subscribed to the offre
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger raised" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {% include '::ModulesUsed/addBtn.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/publication.css') }}" />
 {% endblock %}
+{% block body %}
+<section class="parallax-container parallax-container2 index rbga">
+  <div class="parallax z-depth-2 ">		
+    <img class="img-back " src="https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450">
+  </div>
 
-{% block javascripts %}
-    <script>
-        $('#myCarousel').carousel({
-            interval: 5000
-        })
+</section>
+<div class="row ">
+	<div class="col m6 marg-titre">
+		<h2 class="white-text">Title | {{offre.name}}</h2>
+		<p class="white-text">Du texte important de sous catégorie ou autre à completer ici, 70 a 150 caractères. Blablablablablablablablbalbalbalbalbalablabalabalblzndfisdsjiifdijfsjifijffjiefzefzfezjefzfçejefzjjfzez | {#{offre.description}#}</p>	
+	</div>
+</div>
 
-        $('.carousel .carousel-item').each(function(){
-            var next = $(this).next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-            next.children(':first-child').clone().appendTo($(this));
+<div class="container">
+	<div class="row">
+    	<div class="col s12 m12 l12 white">
+			<!--<img class="responsive-img" src="../assets/img/blog3.jpg">-->
+			<h4 class="colo-gray">Titre du poste | </h4>
+			<br>
+			<i class="material-icons colo-gray">today</i>28 Juin 2017
+			<i class="material-icons marg-le colo-gray">work</i>Commercial
+			<i class="material-icons marg-le colo-gray">location_on</i>Strasbourg
+            <i class="material-icons marg-le colo-gray">web</i><a href="#!">Nom du site</a>
+			<hr>
+			<span>
+                <div class="col s12 m12 l12 card-action">
+			<h4 class="colo-gray">Entreprise</h4>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+			</span>
+			<hr>
+			<h4 class="colo-gray"> This is a list</h4>
+			<ul>
+				<li>List item</li>
+				<li>List item</li>
+				<li>List item</li>
+				<li>List item</li>
+				<li>List item</li>
+				<li>List item</li>
+			</ul>
+			</div>
 
-            if (next.next().length>0) {
-                next.next().children(':first-child').clone().appendTo($(this));
-            }
-            else {
-                $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-            }
-        });
-    </script>
-    <script type="text/javascript">
-        $(function() {
-            $('.search').on('keyup', function (e) {
-                if ($(this).val()) {
-                    if (e.keyCode == 13) {
-                        var offre_id = $(this).attr("id");
-                        var comment = $(this).val();
+		</div>
+		
+	</div>
+</div>
 
-                        $.ajax({
-                            type: "GET",
-                            url: "{{ path('addcomment') }}",
-                            cache: false,
-                            data: {offre_id: offre_id, text: comment},
-                        }).done(function (data) {
-                            $('#comments').prepend("<li class=\"comment author-comment\"><div class=\"info\"><a href=\"#\">" + data['user'] + "</a><span>" + data['date'] + "</span></div><a class=\"avatar\" href=\"#\"></a><p>" + data['comment'] + "</p></li>");
-
-                            $('.search').val("");
-                        });
-                    }
-                }
-            });
-            $('.vote').on('click', function()
-            {
-                var upstuff = $(this).attr("id");
-                var url = null;
-                if(upstuff == "up")
-                {url = "{{ path('addvote') }}"; }
-                else if(upstuff == "Firstdate")
-                {url = "{{ path('firstdate') }}"; }
-                else if(upstuff == "Seconddate")
-                {url = "{{ path('seconddate') }}"; }
-                else if(upstuff == "Thirddate")
-                {url = "{{ path('thirddate') }}"; }
-                else
-                {url = "{{ path('removevote') }}"; }
-
-                var offre_id = $(this).children("i").attr("id");
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                    cache: false,
-                    data: {offre_id: offre_id},
-                    }).done(function (data) {
-                    $('#TVote').html(data['total']);
-                });
-            });
-        });
-    </script>
 {% endblock %}

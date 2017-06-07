@@ -73,12 +73,12 @@ class OffreType extends AbstractType
                                           'attr' => array('class' => 'btn btn-danger raised',
                                           'placeholder' => 'Send',)));
 
-        $builder->get('date_offre')
+        /*$builder->get('date_offre')
             ->addModelTransformer(new DateTimeTransformer());
         $builder->get('date_offre_1')
             ->addModelTransformer(new DateTimeTransformer());
         $builder->get('date_offre_2')
-            ->addModelTransformer(new DateTimeTransformer());
+            ->addModelTransformer(new DateTimeTransformer());*/
     }
     public function configureOptions(OptionsResolver $resolver)
     {

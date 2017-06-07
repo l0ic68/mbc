@@ -8,13 +8,24 @@ use Main\MainBundle\Entity\Contact;
 use Main\MainBundle\Entity\Offres;
 use Main\MainBundle\Form\ContactType;
 use Main\MainBundle\Form\OffreType;
+use Main\MainBundle\Form\MediaType;
 use Main\MainBundle\Repository\OffresRepository;
 
 class OffresController extends Controller
 {
-    public function offreAction()
+    public function offreAction($id)
     {
-        return $this->render('MainBundle:Default:layout\offre.html.twig');
+        /*$em = $this->getDoctrine()->getManager();
+        $offres = $em->getRepository('MainBundle:Offres')->find($id);
+        return $this->render('MainBundle:Default:layout\offre.html.twig');*/
+
+        $em = $this->getDoctrine()->getManager();
+        $offre = $em->getRepository('MainBundle:Offres')->find($id);
+        $medias = $em->getRepository('MainBundle:Offres')->findByMedia($id);
+        $form = $this->createForm(new OffreType());
+        $form_Media = $this->createForm(new MediaType());
+
+        return $this->render('MainBundle:Default:Offres\offre.html.twig',array("offre"=> $offre,'form'=>$form->createView(),"medias"=>$medias,'form_Media'=>$form_Media->createView()));
     }
 
     public function offresAction()
