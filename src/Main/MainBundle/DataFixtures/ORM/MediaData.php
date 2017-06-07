@@ -121,7 +121,9 @@ class MediaData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('linkedin',$linkedin);
         $this->addReference('pictoworker',$pictoworker);
         $this->addReference('pictocollaboration',$pictocollaboration);
-        
+        $this->addReference('cvmedia',$cvmedia);
+        $this->addReference('entretientmedia',$entretientmedia);
+
     }
 
     public function getOrder()

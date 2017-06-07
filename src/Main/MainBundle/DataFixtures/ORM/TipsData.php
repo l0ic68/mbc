@@ -5,7 +5,7 @@ namespace Main\MainBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Main\MainBundle\Entity\Media;
+use Main\MainBundle\Entity\Tips;
 
 
 
