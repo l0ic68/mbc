@@ -30,10 +30,10 @@
                     <div class="gallery-curve-wrapper">
                         <a class="gallery-cover gray">
                             {#<img class="responsive-img " src="/monbatiment/web{{ asset(offre.media.path) }}" alt="placeholder">#}
-                            <img class="responsive-img " src="{{ asset(offre.media.path) }}" alt="placeholder">
+                            <a href="{{ path('offre', { 'id': offre.id }) }}"> <img class="responsive-img " src="{{ asset(offre.media.path) }}" alt="placeholder"></a>
                         </a>
                         <div class="gallery-header">
-                            <span>{{ offre.name }}</span>
+                            <span><a href="{{ path('offre', { 'id': offre.id }) }}">{{ offre.name }}</a></span>
                         </div>
                         <!--
                         <div class="gallery-body">

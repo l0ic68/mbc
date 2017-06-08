@@ -40,6 +40,7 @@ class RegistrationController extends BaseController
         $user = $userManager->createUser();
         $user->setEnabled(true);
 
+
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 
@@ -71,11 +72,11 @@ class RegistrationController extends BaseController
 
                 if($type == 'candidat')
                 {
-                    return $this->redirectToRoute('inscription_candidat');
+                    return $this->redirectToRoute('inscription_candidat',array('id'=>$user->getId()));
                 }
                 if($type == 'entreprise')
                 {
-                    return $this->redirectToRoute('inscription_entreprise');
+                    return $this->redirectToRoute('inscription_entreprise',array('id'=>$user->getId()));
                 }
                 return $response;
             }

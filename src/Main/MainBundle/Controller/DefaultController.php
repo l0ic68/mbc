@@ -10,11 +10,15 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MainBundle:Default:layout\index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $tips = $em->getRepository('MainBundle:Tips')->findAll();
+        return $this->render('MainBundle:Default:layout\index.html.twig',array('tips'=>$tips));
     }
     public function accueilAction()
     {
-        return $this->render('MainBundle:Default:layout\index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $tips = $em->getRepository('MainBundle:Tips')->findAll();
+        return $this->render('MainBundle:Default:layout\index.html.twig',array('tips'=>$tips));
     }
     public function mentions_legalesAction()
     {

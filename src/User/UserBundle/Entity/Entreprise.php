@@ -77,6 +77,11 @@ class Entreprise
      */
     private $position;
 
+//    /**
+//     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User",cascade={"persist"})
+//     * @ORM\JoinColumn(nullable=true)
+//     */
+//    private $user;
 
     /**
      * Get id
@@ -279,5 +284,28 @@ class Entreprise
     {
         return $this->position;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \User\UserBundle\Entity\User $user
+     *
+     * @return Entreprise
+     */
+    public function setUser(\User\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \User\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

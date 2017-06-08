@@ -42,7 +42,11 @@ class Candidat
      */
     private $phone;
 
-
+//    /**
+//     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User",cascade={"persist"})
+//     * @ORM\JoinColumn(nullable=true)
+//     */
+//    private $user;
     /**
      * Get id
      *
@@ -124,5 +128,28 @@ class Candidat
     {
         return $this->phone;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \User\UserBundle\Entity\User $user
+     *
+     * @return Candidat
+     */
+    public function setUser(\User\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \User\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}
