@@ -3,30 +3,36 @@
 namespace User\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
- * Candidat
- *
+ * @ORM\Entity
  * @ORM\Table(name="entreprise")
- * @ORM\Entity(repositoryClass="User\UserBundle\Repository\EntrepriseRepository")
+ * @UniqueEntity(fields = "username", targetClass = "User\UserBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "User\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
-class Entreprise
+class Entreprise extends User
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="entreprise", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $entreprise;
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
+     */
+    private $prenom;
 
     /**
      * @var string
@@ -36,85 +42,51 @@ class Entreprise
     private $phone;
 
     /**
-     * @var string
+     * Set nom
      *
-     * @ORM\Column(name="adresse", type="string", length=255)
-     */
-    private $adresse;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pays", type="string", length=255)
-     */
-    private $pays;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="code_postal", type="string", length=255)
-     */
-    private $codePostal;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="interlocuteur_nom", type="string", length=255)
-     */
-    private $interlocuteurNom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="interlocuteur_prenom", type="string", length=255)
-     */
-    private $interlocuteurPrenom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="position", type="string", length=255)
-     */
-    private $position;
-
-//    /**
-//     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User",cascade={"persist"})
-//     * @ORM\JoinColumn(nullable=true)
-//     */
-//    private $user;
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set entreprise
-     *
-     * @param string $entreprise
+     * @param string $nom
      *
      * @return Entreprise
      */
-    public function setEntreprise($entreprise)
+    public function setNom($nom)
     {
-        $this->entreprise = $entreprise;
+        $this->nom = $nom;
     
         return $this;
     }
 
     /**
-     * Get entreprise
+     * Get nom
      *
      * @return string
      */
-    public function getEntreprise()
+    public function getNom()
     {
-        return $this->entreprise;
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Entreprise
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
     }
 
     /**
@@ -139,173 +111,5 @@ class Entreprise
     public function getPhone()
     {
         return $this->phone;
-    }
-
-    /**
-     * Set adresse
-     *
-     * @param string $adresse
-     *
-     * @return Entreprise
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-    
-        return $this;
-    }
-
-    /**
-     * Get adresse
-     *
-     * @return string
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * Set pays
-     *
-     * @param string $pays
-     *
-     * @return Entreprise
-     */
-    public function setPays($pays)
-    {
-        $this->pays = $pays;
-    
-        return $this;
-    }
-
-    /**
-     * Get pays
-     *
-     * @return string
-     */
-    public function getPays()
-    {
-        return $this->pays;
-    }
-
-    /**
-     * Set codePostal
-     *
-     * @param string $codePostal
-     *
-     * @return Entreprise
-     */
-    public function setCodePostal($codePostal)
-    {
-        $this->codePostal = $codePostal;
-    
-        return $this;
-    }
-
-    /**
-     * Get codePostal
-     *
-     * @return string
-     */
-    public function getCodePostal()
-    {
-        return $this->codePostal;
-    }
-
-    /**
-     * Set interlocuteurNom
-     *
-     * @param string $interlocuteurNom
-     *
-     * @return Entreprise
-     */
-    public function setInterlocuteurNom($interlocuteurNom)
-    {
-        $this->interlocuteurNom = $interlocuteurNom;
-    
-        return $this;
-    }
-
-    /**
-     * Get interlocuteurNom
-     *
-     * @return string
-     */
-    public function getInterlocuteurNom()
-    {
-        return $this->interlocuteurNom;
-    }
-
-    /**
-     * Set interlocuteurPrenom
-     *
-     * @param string $interlocuteurPrenom
-     *
-     * @return Entreprise
-     */
-    public function setInterlocuteurPrenom($interlocuteurPrenom)
-    {
-        $this->interlocuteurPrenom = $interlocuteurPrenom;
-    
-        return $this;
-    }
-
-    /**
-     * Get interlocuteurPrenom
-     *
-     * @return string
-     */
-    public function getInterlocuteurPrenom()
-    {
-        return $this->interlocuteurPrenom;
-    }
-
-    /**
-     * Set position
-     *
-     * @param string $position
-     *
-     * @return Entreprise
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return string
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \User\UserBundle\Entity\User $user
-     *
-     * @return Entreprise
-     */
-    public function setUser(\User\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \User\UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }

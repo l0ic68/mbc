@@ -9,9 +9,9 @@ use User\UserBundle\Entity\Entreprise;
 use User\UserBundle\Form\EntrepriseType;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class EntrepriseController extends Controller
 {
-    public function candidatAction(Request $request)
+    /*public function candidatAction(Request $request)
     {
         $candidat = new Candidat();
         $type = $request->query->get('id');
@@ -29,28 +29,16 @@ class DefaultController extends Controller
             return $this->redirectToRoute('main_homepage');
         }
         return $this->render('UserBundle:Default:layout\candidat.html.twig',array('form'=>$form->createView()));
-    }
+    }*/
 
-    public function pugxCandidatAction(Request $request)
-    {
-        /*$candidat = new Candidat();
-        $type = $request->query->get('id');
-        $em =  $this->getDoctrine()->getManager();
-        $user = $em->getRepository('UserBundle:User')->find($type);
-        $form = $this->createForm(new CandidatType(), $candidat);
-        $form->handleRequest($request);*/
-        return $this->container
-                    ->get('pugx_multi_user.registration_manager')
-                    ->register('User\UserBundle\Entity\Candidat');
-    }
 
     public function pugxEntrepriseAction(Request $request)
     {
-        /*$candidat = new Candidat();
+        /*$entreprise = new Entreprise();
         $type = $request->query->get('id');
         $em =  $this->getDoctrine()->getManager();
         $user = $em->getRepository('UserBundle:User')->find($type);
-        $form = $this->createForm(new CandidatType(), $candidat);
+        $form = $this->createForm(new EntrepriseType(), $entreprise);
         $form->handleRequest($request);*/
         return $this->container
             ->get('pugx_multi_user.registration_manager')

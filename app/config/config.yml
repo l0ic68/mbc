@@ -38,6 +38,7 @@ fos_user:
     user_class: User\UserBundle\Entity\User
     service:
         mailer: fos_user.mailer.twig_swift
+        user_manager: pugx_user_manager
     from_email:
         address: "tnpcclqp@gmail.com"
         sender_name: "Us"
@@ -84,3 +85,34 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+pugx_multi_user:
+  users:
+    candidat:
+        entity: 
+          class: User\UserBundle\Entity\Candidat
+        registration:
+          form: 
+            type: User\UserBundle\Form\RegistrationCandidatFormType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: UserUserBundle:Registration:candidat.form.html.twig
+        profile:
+          form:
+            type: User\UserBundle\Form\Type\ProfileCandidatFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default] 
+    entreprise:
+        entity: 
+          class: User\UserBundle\Entity\Entreprise
+        registration:
+          form: 
+            type: User\UserBundle\Form\RegistrationEntrepriseFormType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: UserUserBundle:Registration:entreprise.form.html.twig
+        profile:
+          form: 
+            type: User\UserBundle\Form\Type\ProfileEntrepriseFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default] 

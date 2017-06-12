@@ -1,14 +1,13 @@
 <?php
-// src/AppBundle/Form/RegistrationType.php
 
 namespace User\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RegistrationType extends AbstractType
+class RegistrationEntrepriseFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -19,7 +18,8 @@ class RegistrationType extends AbstractType
             ->add('prenom', 'text', array('label' => 'First name',
                 'attr' => array('class' => 'input-medium search-query form-control',
                     'placeholder' => 'First name',)))
-            // ->add('username', null, array('label' => 'username', 'translation_domain' => 'FOSUserBundle'))
+            ->add('phone');
+//             ->add('username', null, array('label' => 'username', 'translation_domain' => 'FOSUserBundle'))
 //            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'email',
 //                'attr' => array('class' => 'input-medium search-query form-control',
 //                    'placeholder' => 'Email',)))
@@ -31,17 +31,15 @@ class RegistrationType extends AbstractType
 //                'invalid_message' => 'fos_user.password.mismatch',
 //            ))
 //            ->add('submit','submit')
-        ;
+
     }
     public function getParent()
     {
-         return 'fos_user_registration';
+        return 'fos_user_registration';
     }
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'User\UserBundle\Entity\User'
-        ));
+        $resolver->setDefaults(array('data_class' => 'User\UserBundle\Entity\Entreprise'));
     }
     public function getName()
     {

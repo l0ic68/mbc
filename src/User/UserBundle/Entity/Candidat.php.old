@@ -3,24 +3,25 @@
 namespace User\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity
+ * entreprise
+ *
  * @ORM\Table(name="candidat")
- * @UniqueEntity(fields = "username", targetClass = "User\UserBundle\Entity\User", message="fos_user.username.already_used")
- * @UniqueEntity(fields = "email", targetClass = "User\UserBundle\Entity\User", message="fos_user.email.already_used")
+ * @ORM\Entity(repositoryClass="Main\MainBundle\Repository\CandidatRepository")
  */
-class Candidat extends User
+class Candidat
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)

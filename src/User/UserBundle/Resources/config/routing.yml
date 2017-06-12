@@ -5,3 +5,11 @@ inscription_candidat:
 inscription_entreprise:
     path:     /entreprise
     defaults: { _controller: UserBundle:Default:entreprise }
+
+candidat_registration:
+    path:  /register/candidat
+    defaults: { _controller: UserBundle:Default:pugxCandidat }
+
+entreprise_registration:
+    path:  /register/entreprise
+    defaults: { _controller: UserBundle:Entreprise:pugxEntreprise }
