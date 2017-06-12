@@ -5,6 +5,7 @@ namespace Main\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Main\MainBundle\Entity\Contact;
+use Main\MainBundle\Entity\Comments;
 use Main\MainBundle\Entity\Offres;
 use Main\MainBundle\Form\ContactType;
 use Main\MainBundle\Form\OffreType;
@@ -57,6 +58,28 @@ class OffresController extends Controller
             'offres' => $offres,
         ));
 
+        $response = new JsonResponse();
+        $response->setData(array('classifiedList' => $content));
+        return $response;
+    }
+    public function commentAction()
+    {
+        $request = $this->container->get('request');
+        $id = $request->query->get('id');
+        $commentSite = $request->query->get('comment');
+
+        $em = $this->getDoctrine()->getManager();
+		$offre = $em->getRepository('MainBundle:Offres')->findOneById($id);
+        $comment = new Comments();
+        $comment->setComment($commentSite);
+        $comment->setDateComment(new \DateTime("now"), new \DateTimeZone('Europe/Paris'));
+		$offre->addCommentaire($comment);
+		$em->persist($offre);
+        $em->flush();
+
+        $content = $this->RenderView('MainBundle:Default:Offres\commentOffre.html.twig', array(
+            'offre' => $offre,
+        ));
         $response = new JsonResponse();
         $response->setData(array('classifiedList' => $content));
         return $response;

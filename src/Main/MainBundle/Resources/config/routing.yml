@@ -27,6 +27,10 @@ searchOffres:
     pattern: /searchOffres
     defaults: { _controller: MainBundle:Offres:searchoffres }
 
+comment:
+    pattern: /comment
+    defaults: { _controller: MainBundle:Offres:comment }
+
 mentions_legales:
     path:     /mentions_legales
     defaults: { _controller: MainBundle:Default:mentions_legales }   

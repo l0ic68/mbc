@@ -122,6 +122,12 @@ class Offres
     public $media;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Main\MainBundle\Entity\Comments", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $commentaires;
+
+    /**
      * Get id
      *
      * @return int
@@ -469,5 +475,46 @@ class Offres
     public function getWebsitelink()
     {
         return $this->websitelink;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add commentaire
+     *
+     * @param \Main\MainBundle\Entity\Comments $commentaire
+     *
+     * @return Offres
+     */
+    public function addCommentaire(\Main\MainBundle\Entity\Comments $commentaire)
+    {
+        $this->commentaires[] = $commentaire;
+    
+        return $this;
+    }
+
+    /**
+     * Remove commentaire
+     *
+     * @param \Main\MainBundle\Entity\Comments $commentaire
+     */
+    public function removeCommentaire(\Main\MainBundle\Entity\Comments $commentaire)
+    {
+        $this->commentaires->removeElement($commentaire);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
     }
 }

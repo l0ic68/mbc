@@ -1,53 +1,90 @@
 {% extends "::layout/layout.html.twig" %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/publication.css') }}" />
+	<link rel="stylesheet" href="{{ asset('css/publication.css') }}" />
 {% endblock %}
 {% block body %}
-<section class="parallax-container parallax-container2 index rbga">
-  <div class="parallax z-depth-2 ">		
-    <img class="img-back " src="https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450">
-  </div>
-
-</section>
-<div class="row ">
-	<div class="col m6 marg-titre">
-		<h2 class="white-text">Title | {{offre.name}}</h2>
-		<p class="white-text">{{offre.descriptionpost}}</p>	
-	</div>
-</div>
-
-<div class="container">
-	<div class="row">
-    	<div class="col s12 m12 l12 white">
-			<!--<img class="responsive-img" src="../assets/img/blog3.jpg">-->
-			<h4 class="colo-gray">Titre du poste | {{offre.title}}</h4>
-			<br>
-			<i class="material-icons colo-gray">today</i>28 Juin 2017
-			<i class="material-icons marg-le colo-gray">work</i>Commercial | {{offre.category}}
-			<i class="material-icons marg-le colo-gray">location_on</i>Strasbourg | {{offre.location}}
-            <i class="material-icons marg-le colo-gray">web</i><a href="#!">Nom du site {{offre.websitelink}}</a>
-			<hr>
-			<span>
-                <div class="col s12 m12 l12 card-action">
-			<h4 class="colo-gray">Entreprise</h4>
-				{{offre.description}}
-			</span>
-			<hr>
-			<span>
-                
-			<h4 class="colo-gray">Mission</h4>
-				{{offre.descriptionmission}}
-			</span>
-			<hr>
-			<h4 class="colo-gray">Profile recherché</h4>
-			<ul>
-				{{offre.descriptionprofilesearch}}
-			</ul>
-			</div>
-
+	<section class="parallax-container parallax-container2 index rbga">
+		<div class="parallax z-depth-2 ">
+			<img class="img-back " src="https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450">
 		</div>
-		
-	</div>
-</div>
 
+	</section>
+	<div class="row ">
+		<div class="col m6 marg-titre">
+			<h2 class="white-text">Title | {{offre.name}}</h2>
+			<p class="white-text">{{offre.descriptionpost}}</p>
+		</div>
+	</div>
+
+	<div class="container">
+	<div class="row">
+	<div class="col s12 m12 l12 white">
+	<!--<img class="responsive-img" src="../assets/img/blog3.jpg">-->
+	<h4 class="colo-gray">Titre du poste | {{offre.title}}</h4>
+	<br>
+	<i class="material-icons colo-gray">today</i>28 Juin 2017
+	<i class="material-icons marg-le colo-gray">work</i>Commercial | {{offre.category}}
+	<i class="material-icons marg-le colo-gray">location_on</i>Strasbourg | {{offre.location}}
+	<i class="material-icons marg-le colo-gray">web</i><a href="#!">Nom du site {{offre.websitelink}}</a>
+	<hr>
+	<div class="col s12 m12 l12 card-action">
+	<span>
+					<h4 class="colo-gray">Entreprise</h4>
+        {{offre.description}}
+				</span>
+	<hr>
+	<span>
+					<h4 class="colo-gray">Mission</h4>
+        {{offre.descriptionmission}}
+				</span>
+	<hr>
+	<h4 class="colo-gray">Profile recherché</h4>
+	<ul>
+        {{offre.descriptionprofilesearch}}
+	</ul>
+
+	<div class="comments">
+		<h4>Commentaire</h4>
+    	{% if not offre.commentaires.empty %}
+    		{%for commentaire in offre.commentaires%}
+    			{{commentaire.comment}}
+    		{%endfor%}
+    	{%endif%}
+    	<input class="form-control commentaire" type="text" placeholder="Commentaire" id="{{ offre.id }}">
+    	{#<div class="comment">#}
+			<button class="btn waves-effect waves-teal comment" id="{{ offre.id }}">Envoyer</button>
+    	{#</div>#}
+    </div>
+
+
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    {% block javascripts %}
+		<script type="text/javascript">
+            $(function(){
+                $('.comment').on('click', function()
+                {
+                    var id = $(this).attr("id");
+                    var commentaire = $(".commentaire").val();
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "{{ path('comment') }}",
+                        cache: false,
+                        data: { id: id , comment: commentaire},
+                        success:function(response){
+                            $('.comments').replaceWith(response.classifiedList);
+                        },
+                        error:function(response){
+                            console.log(response);
+                        }
+                    });
+                });
+            });
+        </script>
 {% endblock %}
+        {% endblock %}
