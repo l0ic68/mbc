@@ -136,6 +136,7 @@ video {
 }
 .bouton{
     color: #C2C2C2;
+    font-size: initial!important;
     text-align: center;
     transition: .4s;border-radius:20px ;
     width: 25%;
