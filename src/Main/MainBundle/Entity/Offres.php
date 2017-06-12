@@ -31,9 +31,58 @@ class Offres
     /**
      * @var string
      *
+     * @ORM\Column(name="descriptionpost", type="text")
+     */
+    private $descriptionpost;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descriptioncompany", type="text")
+     */
+    private $descriptioncompany;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descriptionmission", type="text")
+     */
+    private $descriptionmission;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descriptionprofilesearch", type="text")
+     */
+    private $descriptionprofilesearch;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=255)
+     */
+    private $category;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="websitelink", type="string", length=255)
+     */
+    private $websitelink;
 
     /**
      * @var float
@@ -49,22 +98,6 @@ class Offres
      * @ORM\JoinColumn(nullable=true)
      */
     private $date_offre;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_offre1", type="datetime")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $date_offre1;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_offre2", type="datetime")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $date_offre2;
 
     /**
      * @var int
@@ -269,51 +302,172 @@ class Offres
         return $this->media;
     }
 
+
     /**
-     * Set dateOffre1
+     * Set descriptionpost
      *
-     * @param \DateTime $dateOffre1
+     * @param string $descriptionpost
      *
      * @return Offres
      */
-    public function setDateOffre1($dateOffre1)
+    public function setDescriptionpost($descriptionpost)
     {
-        $this->date_offre1 = $dateOffre1;
-
+        $this->descriptionpost = $descriptionpost;
+    
         return $this;
     }
 
     /**
-     * Get dateOffre1
+     * Get descriptionpost
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getDateOffre1()
+    public function getDescriptionpost()
     {
-        return $this->date_offre1;
+        return $this->descriptionpost;
     }
 
     /**
-     * Set dateOffre2
+     * Set descriptioncompany
      *
-     * @param \DateTime $dateOffre2
+     * @param string $descriptioncompany
      *
      * @return Offres
      */
-    public function setDateOffre2($dateOffre2)
+    public function setDescriptioncompany($descriptioncompany)
     {
-        $this->date_offre2 = $dateOffre2;
-
+        $this->descriptioncompany = $descriptioncompany;
+    
         return $this;
     }
 
     /**
-     * Get dateOffre2
+     * Get descriptioncompany
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getDateOffre2()
+    public function getDescriptioncompany()
     {
-        return $this->date_offre2;
+        return $this->descriptioncompany;
+    }
+
+    /**
+     * Set descriptionmission
+     *
+     * @param string $descriptionmission
+     *
+     * @return Offres
+     */
+    public function setDescriptionmission($descriptionmission)
+    {
+        $this->descriptionmission = $descriptionmission;
+    
+        return $this;
+    }
+
+    /**
+     * Get descriptionmission
+     *
+     * @return string
+     */
+    public function getDescriptionmission()
+    {
+        return $this->descriptionmission;
+    }
+
+    /**
+     * Set descriptionprofilesearch
+     *
+     * @param string $descriptionprofilesearch
+     *
+     * @return Offres
+     */
+    public function setDescriptionprofilesearch($descriptionprofilesearch)
+    {
+        $this->descriptionprofilesearch = $descriptionprofilesearch;
+    
+        return $this;
+    }
+
+    /**
+     * Get descriptionprofilesearch
+     *
+     * @return string
+     */
+    public function getDescriptionprofilesearch()
+    {
+        return $this->descriptionprofilesearch;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Offres
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Offres
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set websitelink
+     *
+     * @param string $websitelink
+     *
+     * @return Offres
+     */
+    public function setWebsitelink($websitelink)
+    {
+        $this->websitelink = $websitelink;
+    
+        return $this;
+    }
+
+    /**
+     * Get websitelink
+     *
+     * @return string
+     */
+    public function getWebsitelink()
+    {
+        return $this->websitelink;
     }
 }

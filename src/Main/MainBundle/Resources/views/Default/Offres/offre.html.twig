@@ -12,7 +12,7 @@
 <div class="row ">
 	<div class="col m6 marg-titre">
 		<h2 class="white-text">Title | {{offre.name}}</h2>
-		<p class="white-text">Du texte important de sous catégorie ou autre à completer ici, 70 a 150 caractères. Blablablablablablablablbalbalbalbalbalablabalabalblzndfisdsjiifdijfsjifijffjiefzefzfezjefzfçejefzjjfzez | {#{offre.description}#}</p>	
+		<p class="white-text">{{offre.descriptionpost}}</p>	
 	</div>
 </div>
 
@@ -20,27 +20,28 @@
 	<div class="row">
     	<div class="col s12 m12 l12 white">
 			<!--<img class="responsive-img" src="../assets/img/blog3.jpg">-->
-			<h4 class="colo-gray">Titre du poste | </h4>
+			<h4 class="colo-gray">Titre du poste | {{offre.title}}</h4>
 			<br>
 			<i class="material-icons colo-gray">today</i>28 Juin 2017
-			<i class="material-icons marg-le colo-gray">work</i>Commercial
-			<i class="material-icons marg-le colo-gray">location_on</i>Strasbourg
-            <i class="material-icons marg-le colo-gray">web</i><a href="#!">Nom du site</a>
+			<i class="material-icons marg-le colo-gray">work</i>Commercial | {{offre.category}}
+			<i class="material-icons marg-le colo-gray">location_on</i>Strasbourg | {{offre.location}}
+            <i class="material-icons marg-le colo-gray">web</i><a href="#!">Nom du site {{offre.websitelink}}</a>
 			<hr>
 			<span>
                 <div class="col s12 m12 l12 card-action">
 			<h4 class="colo-gray">Entreprise</h4>
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+				{{offre.description}}
 			</span>
 			<hr>
-			<h4 class="colo-gray"> This is a list</h4>
+			<span>
+                
+			<h4 class="colo-gray">Mission</h4>
+				{{offre.descriptionmission}}
+			</span>
+			<hr>
+			<h4 class="colo-gray">Profile recherché</h4>
 			<ul>
-				<li>List item</li>
-				<li>List item</li>
-				<li>List item</li>
-				<li>List item</li>
-				<li>List item</li>
-				<li>List item</li>
+				{{offre.descriptionprofilesearch}}
 			</ul>
 			</div>
 
