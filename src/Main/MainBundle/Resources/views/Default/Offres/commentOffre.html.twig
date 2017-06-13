@@ -2,7 +2,13 @@
 	<h4>Commentaire</h4>
     {% if not offre.commentaires.empty %}
         {%for commentaire in offre.commentaires%}
-            {{commentaire.comment}}
+            {% if commentaire.candidat != null %}
+                {{ commentaire.candidat.nom }} {{ commentaire.candidat.prenom }} |
+            {% endif %}
+            {% if commentaire.entreprise != null %}
+                {{ commentaire.entreprise.nom }} {{ commentaire.entreprise.prenom }} |
+            {% endif %}
+            {{commentaire.comment}} | {{ commentaire.dateComment|date() }}<br>
         {%endfor%}
     {%endif%}
 	<input class="form-control commentaire" type="text" placeholder="Commentaire" id="{{ offre.id }}">

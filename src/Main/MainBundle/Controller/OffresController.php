@@ -5,6 +5,8 @@ namespace Main\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Main\MainBundle\Entity\Contact;
+use User\UserBundle\Entity\Candidat;
+use User\UserBundle\Entity\Entreprise;
 use Main\MainBundle\Entity\Comments;
 use Main\MainBundle\Entity\Offres;
 use Main\MainBundle\Form\ContactType;
@@ -64,24 +66,35 @@ class OffresController extends Controller
     }
     public function commentAction()
     {
-        $request = $this->container->get('request');
-        $id = $request->query->get('id');
-        $commentSite = $request->query->get('comment');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if( $user != "anon.") {
+            $request = $this->container->get('request');
+            $id = $request->query->get('id');
+            $commentSite = $request->query->get('comment');
 
-        $em = $this->getDoctrine()->getManager();
-		$offre = $em->getRepository('MainBundle:Offres')->findOneById($id);
-        $comment = new Comments();
-        $comment->setComment($commentSite);
-        $comment->setDateComment(new \DateTime("now"), new \DateTimeZone('Europe/Paris'));
-		$offre->addCommentaire($comment);
-		$em->persist($offre);
-        $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $offre = $em->getRepository('MainBundle:Offres')->findOneById($id);
+            $comment = new Comments();
+            $comment->setComment($commentSite);
+            $comment->setDateComment(new \DateTime("now"), new \DateTimeZone('Europe/Paris'));
+            if($user instanceof Entreprise)
+            {
+                $comment->setEntreprise($user);
+            }
+            if($user instanceof Candidat)
+            {
+                $comment->setCandidat($user);
+            }
+            $offre->addCommentaire($comment);
+            $em->persist($offre);
+            $em->flush();
 
-        $content = $this->RenderView('MainBundle:Default:Offres\commentOffre.html.twig', array(
-            'offre' => $offre,
-        ));
-        $response = new JsonResponse();
-        $response->setData(array('classifiedList' => $content));
-        return $response;
+            $content = $this->RenderView('MainBundle:Default:Offres\commentOffre.html.twig', array(
+                'offre' => $offre,
+            ));
+            $response = new JsonResponse();
+            $response->setData(array('classifiedList' => $content));
+            return $response;
+        }
     }
 }

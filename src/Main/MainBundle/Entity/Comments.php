@@ -37,10 +37,16 @@ class Comments
     private $date_comment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Entreprise",cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
-    private $user;
+    private $entreprise;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Candidat",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $candidat;
 
 
 
@@ -129,4 +135,52 @@ class Comments
     }
 
 
+
+    /**
+     * Set entreprise
+     *
+     * @param \User\UserBundle\Entity\Entreprise $entreprise
+     *
+     * @return Comments
+     */
+    public function setEntreprise(\User\UserBundle\Entity\Entreprise $entreprise = null)
+    {
+        $this->entreprise = $entreprise;
+    
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return \User\UserBundle\Entity\Entreprise
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
+    }
+
+    /**
+     * Set candidat
+     *
+     * @param \User\UserBundle\Entity\Candidat $candidat
+     *
+     * @return Comments
+     */
+    public function setCandidat(\User\UserBundle\Entity\Candidat $candidat = null)
+    {
+        $this->candidat = $candidat;
+    
+        return $this;
+    }
+
+    /**
+     * Get candidat
+     *
+     * @return \User\UserBundle\Entity\Candidat
+     */
+    public function getCandidat()
+    {
+        return $this->candidat;
+    }
 }
