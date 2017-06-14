@@ -24,6 +24,10 @@ class OffresController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $offre = $em->getRepository('MainBundle:Offres')->find($id);
+        $price = $offre->getPrice();
+        $offre->setPrice($price + 1);
+        $em->persist($offre);
+        $em->flush();
         $medias = $em->getRepository('MainBundle:Offres')->findByMedia($id);
         $form = $this->createForm(new OffreType());
         $form_Media = $this->createForm(new MediaType());

@@ -121,6 +121,24 @@ class Offres
      */
     public $media;
 
+        /**
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    public $user;
+
+            /**
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Entreprise", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    public $entreprise;
+
+            /**
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Candidat", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    public $candidat;
+
     /**
      * @ORM\ManyToMany(targetEntity="Main\MainBundle\Entity\Comments", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
@@ -516,5 +534,77 @@ class Offres
     public function getCommentaires()
     {
         return $this->commentaires;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Main\MainBundle\Entity\User $user
+     *
+     * @return Offres
+     */
+    public function setUser(\Main\MainBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Main\MainBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set entreprise
+     *
+     * @param \User\UserBundle\Entity\Entreprise $entreprise
+     *
+     * @return Offres
+     */
+    public function setEntreprise(\User\UserBundle\Entity\Entreprise $entreprise = null)
+    {
+        $this->entreprise = $entreprise;
+    
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return \User\UserBundle\Entity\Entreprise
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
+    }
+
+    /**
+     * Set candidat
+     *
+     * @param \User\UserBundle\Entity\Candidat $candidat
+     *
+     * @return Offres
+     */
+    public function setCandidat(\User\UserBundle\Entity\Candidat $candidat = null)
+    {
+        $this->candidat = $candidat;
+    
+        return $this;
+    }
+
+    /**
+     * Get candidat
+     *
+     * @return \User\UserBundle\Entity\Candidat
+     */
+    public function getCandidat()
+    {
+        return $this->candidat;
     }
 }
