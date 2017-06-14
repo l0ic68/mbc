@@ -23,93 +23,233 @@ class Entreprise extends User
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nomInterlocuteur", type="string", length=255)
      */
-    private $nom;
+    private $nomInterlocuteur;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="nomEntreprise", type="string", length=255)
      */
-    private $prenom;
+    private $nomEntreprise;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="secteur_activite", type="string", length=255)
      */
-    private $phone;
+    private $secteur;
 
     /**
-     * Set nom
+     * @var string
      *
-     * @param string $nom
+     * @ORM\Column(name="positionInterlocuteur", type="string", length=255)
+     */
+    private $positionInterlocuteur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code_postal", type="string", length=255)
+     */
+    private $codePostal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text")
+     */
+    private $message;
+//
+//    /**
+//     * @ORM\ManyToOne(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist","remove"})
+//     * @ORM\JoinColumn(nullable=true)
+//     */
+//    private $media;
+
+
+
+    /**
+     * Set nomInterlocuteur
+     *
+     * @param string $nomInterlocuteur
      *
      * @return Entreprise
      */
-    public function setNom($nom)
+    public function setNomInterlocuteur($nomInterlocuteur)
     {
-        $this->nom = $nom;
+        $this->nomInterlocuteur = $nomInterlocuteur;
     
         return $this;
     }
 
     /**
-     * Get nom
+     * Get nomInterlocuteur
      *
      * @return string
      */
-    public function getNom()
+    public function getNomInterlocuteur()
     {
-        return $this->nom;
+        return $this->nomInterlocuteur;
     }
 
     /**
-     * Set prenom
+     * Set nomEntreprise
      *
-     * @param string $prenom
+     * @param string $nomEntreprise
      *
      * @return Entreprise
      */
-    public function setPrenom($prenom)
+    public function setNomEntreprise($nomEntreprise)
     {
-        $this->prenom = $prenom;
+        $this->nomEntreprise = $nomEntreprise;
     
         return $this;
     }
 
     /**
-     * Get prenom
+     * Get nomEntreprise
      *
      * @return string
      */
-    public function getPrenom()
+    public function getNomEntreprise()
     {
-        return $this->prenom;
+        return $this->nomEntreprise;
     }
 
     /**
-     * Set phone
+     * Set secteur
      *
-     * @param string $phone
+     * @param string $secteur
      *
      * @return Entreprise
      */
-    public function setPhone($phone)
+    public function setSecteur($secteur)
     {
-        $this->phone = $phone;
+        $this->secteur = $secteur;
     
         return $this;
     }
 
     /**
-     * Get phone
+     * Get secteur
      *
      * @return string
      */
-    public function getPhone()
+    public function getSecteur()
     {
-        return $this->phone;
+        return $this->secteur;
     }
+
+    /**
+     * Set positionInterlocuteur
+     *
+     * @param string $positionInterlocuteur
+     *
+     * @return Entreprise
+     */
+    public function setPositionInterlocuteur($positionInterlocuteur)
+    {
+        $this->positionInterlocuteur = $positionInterlocuteur;
+    
+        return $this;
+    }
+
+    /**
+     * Get positionInterlocuteur
+     *
+     * @return string
+     */
+    public function getPositionInterlocuteur()
+    {
+        return $this->positionInterlocuteur;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Entreprise
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set codePostal
+     *
+     * @param string $codePostal
+     *
+     * @return Entreprise
+     */
+    public function setCodePostal($codePostal)
+    {
+        $this->codePostal = $codePostal;
+    
+        return $this;
+    }
+
+    /**
+     * Get codePostal
+     *
+     * @return string
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     *
+     * @return Entreprise
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+    /*
+ * Si tu veux enlever username
+ */
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
+
 }

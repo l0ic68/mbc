@@ -21,4 +21,13 @@ abstract class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /*
+     * Si tu veux enlever username
+     */
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
+
 }

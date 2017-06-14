@@ -116,7 +116,7 @@ class Offres
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     public $media;

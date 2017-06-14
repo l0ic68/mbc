@@ -1,10 +1,19 @@
 {% extends "::layout/layout.html.twig" %}
 {% block body %}
+    <div class="background-img">
+        <div class="containerperso marg-center z-depth-2">
+            <div class="section">
+                <div class="row">
+                    <h4 class="center degrade2 ">Inscription Entreprise</h4>
     <form action="{{ path('inscription_entreprise') }}" {{ form_enctype(form) }} method="POST">
         {{ form_widget(form) }}
         <div>
             <input type="submit" />
         </div>
     </form>
+    </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 

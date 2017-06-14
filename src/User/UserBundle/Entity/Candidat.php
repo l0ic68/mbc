@@ -20,7 +20,7 @@ class Candidat extends User
      */
     protected $id;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
@@ -41,11 +41,33 @@ class Candidat extends User
      */
     private $phone;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User",cascade={"persist"})
-//     * @ORM\JoinColumn(nullable=true)
-//     */
-//    private $user;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="corps_de_metier", type="string", length=255)
+     */
+    private $metier;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code_postal", type="string", length=255)
+     */
+    private $codePostal;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $media;
+
     /**
      * Get id
      *
@@ -151,4 +173,108 @@ class Candidat extends User
     {
         return $this->user;
     }
+
+    /**
+     * Set metier
+     *
+     * @param string $metier
+     *
+     * @return Candidat
+     */
+    public function setMetier($metier)
+    {
+        $this->metier = $metier;
+    
+        return $this;
+    }
+
+    /**
+     * Get metier
+     *
+     * @return string
+     */
+    public function getMetier()
+    {
+        return $this->metier;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Candidat
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set codePostal
+     *
+     * @param string $codePostal
+     *
+     * @return Candidat
+     */
+    public function setCodePostal($codePostal)
+    {
+        $this->codePostal = $codePostal;
+    
+        return $this;
+    }
+
+    /**
+     * Get codePostal
+     *
+     * @return string
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
+
+    /**
+     * Set media
+     *
+     * @param \Main\MainBundle\Entity\Media $media
+     *
+     * @return Candidat
+     */
+    public function setMedia(\Main\MainBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+    
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Main\MainBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+    /*
+ * Si tu veux enlever username
+ */
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
+
 }
