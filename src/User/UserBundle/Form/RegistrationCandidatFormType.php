@@ -24,9 +24,8 @@ class RegistrationCandidatFormType extends AbstractType
             ->add('metier')
             ->add('adresse')
             ->add('codePostal')
-            ->add('media', new MediaType(), array('label' => 'Image',
-                'attr' => array('class' => 'custom-file-input',
-                    'placeholder' => 'Image',)))
+            ->add('media', new MediaType(), array(
+                    'required' => false ))
              ->add('username', null, array('label' => 'username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'email',
                 'attr' => array('class' => 'input-medium search-query form-control',
