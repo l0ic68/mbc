@@ -34,9 +34,6 @@ class ProfileController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        //$entreprise = $this->getUserOptions();
-        $candidat = $em->getRepository('UserBundle:Candidat')->findAll();
-        $entreprise = $em->getRepository('UserBundle:Entreprise')->findAll();
         $offres = $em->getRepository('MainBundle:Offres')->findAll();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -44,9 +41,7 @@ class ProfileController extends BaseController
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
-            'offres' => $offres,
-            'candidat' => $candidat,
-            'entreprise' => $entreprise
+            'offres' => $offres
         ));
     }
 
