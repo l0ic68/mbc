@@ -51,7 +51,7 @@
 					{{ commentaire.candidat.nom }} {{ commentaire.candidat.prenom }} |
 					{% endif %}
                 {% if commentaire.entreprise != null %}
-                    {{ commentaire.entreprise.nom }} {{ commentaire.entreprise.prenom }} |
+                    {{ commentaire.entreprise.nomInterlocuteur }} {#{ commentaire.entreprise.prenom }#} |
                 {% endif %}
                 {{commentaire.comment}} | {{ commentaire.dateComment|date() }}<br>
     		{%endfor%}
