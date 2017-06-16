@@ -13,6 +13,7 @@ use Main\MainBundle\Form\ContactType;
 use Main\MainBundle\Form\OffreType;
 use Main\MainBundle\Form\MediaType;
 use Main\MainBundle\Repository\OffresRepository;
+use Main\MainBundle\Repository\CommentsRepository;
 
 class OffresController extends Controller
 {
@@ -24,6 +25,7 @@ class OffresController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $offre = $em->getRepository('MainBundle:Offres')->find($id);
+        $comments = $em->getRepository('MainBundle:Comments')->findByOffre($id);
         $price = $offre->getPrice();
         $offre->setPrice($price + 1);
         $em->persist($offre);
@@ -32,7 +34,7 @@ class OffresController extends Controller
         $form = $this->createForm(new OffreType());
         $form_Media = $this->createForm(new MediaType());
 
-        return $this->render('MainBundle:Default:Offres\offre.html.twig',array("offre"=> $offre,'form'=>$form->createView(),"medias"=>$medias,'form_Media'=>$form_Media->createView()));
+        return $this->render('MainBundle:Default:Offres\offre.html.twig',array("offre"=> $offre,'form'=>$form->createView(),"medias"=>$medias,'form_Media'=>$form_Media->createView(),'comments'=> $comments));
     }
 
     public function offresAction()
@@ -75,12 +77,16 @@ class OffresController extends Controller
             $request = $this->container->get('request');
             $id = $request->query->get('id');
             $commentSite = $request->query->get('comment');
+            $avis = $request->query->get('avis');
 
             $em = $this->getDoctrine()->getManager();
             $offre = $em->getRepository('MainBundle:Offres')->findOneById($id);
+            
             $comment = new Comments();
             $comment->setComment($commentSite);
+            $comment->setOffre($offre);
             $comment->setDateComment(new \DateTime("now"), new \DateTimeZone('Europe/Paris'));
+            $comment->setAvis($avis);
             if($user instanceof Entreprise)
             {
                 $comment->setEntreprise($user);
@@ -89,12 +95,12 @@ class OffresController extends Controller
             {
                 $comment->setCandidat($user);
             }
-            $offre->addCommentaire($comment);
-            $em->persist($offre);
+            $em->persist($comment);
             $em->flush();
-
+            $comments = $em->getRepository('MainBundle:Comments')->findByOffre($id);
             $content = $this->RenderView('MainBundle:Default:Offres\commentOffre.html.twig', array(
                 'offre' => $offre,
+                'comments'=>$comments,
             ));
             $response = new JsonResponse();
             $response->setData(array('classifiedList' => $content));

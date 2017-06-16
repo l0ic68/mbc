@@ -1,26 +1,39 @@
 <div class="comments">
 	<h4>Commentaire</h4>
-    {% if not offre.commentaires.empty %}
-        {%for commentaire in offre.commentaires%}
-            {% if commentaire.candidat != null %}
-                {{ commentaire.candidat.nom }} {{ commentaire.candidat.prenom }} |
-            {% endif %}
-            {% if commentaire.entreprise != null %}
-                {{ commentaire.entreprise.nom }} {{ commentaire.entreprise.prenom }} |
-            {% endif %}
-            {{commentaire.comment}} | {{ commentaire.dateComment|date() }}<br>
-        {%endfor%}
-    {%endif%}
+    {% for commentaire in comments %}
+        {% if commentaire.candidat != null %}
+            {{ commentaire.candidat.nom }} {{ commentaire.candidat.prenom }}<br> |
+        {% endif %}
+        {% if commentaire.entreprise != null %}
+            {{ commentaire.entreprise.nomInterlocuteur }}|<br>
+        {% endif %}
+        {{ commentaire.comment }} {{ commentaire.dateComment|date() }}
+        {{ commentaire.avis }}
+    {% endfor %}
+	<div class="switch marg-bot">
+		<label>
+			<i class="material-icons color-green">thumb_up</i>
+			<input type="checkbox"  id="check1">
+			<span class="lever"></span>
+			<i class="material-icons color-red">thumb_down</i>
+		</label>
+	</div>
+
 	<input class="form-control commentaire" type="text" placeholder="Commentaire" id="{{ offre.id }}">
     {#<div class="comment">#}
 	<button class="btn waves-effect waves-teal comment" id="{{ offre.id }}">Envoyer</button>
     {#</div>#}
 </div>
-
 <script type="text/javascript">
     $(function(){
         $('.comment').on('click', function()
         {
+            if(document.getElementById('check1').checked == true){
+                var avis = 'dislike';
+            }
+            else{
+                var avis = 'like';
+            }
             var id = $(this).attr("id");
             var commentaire = $(".commentaire").val();
             $.ajax({
@@ -28,7 +41,7 @@
                 dataType: "json",
                 url: "{{ path('comment') }}",
                 cache: false,
-                data: { id: id , comment: commentaire},
+                data: { id: id , comment: commentaire , avis: avis },
                 success:function(response){
                     $('.comments').replaceWith(response.classifiedList);
                 },

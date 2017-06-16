@@ -48,6 +48,19 @@ class Comments
      */
     private $candidat;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Main\MainBundle\Entity\Offres", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $offre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avis", type="string", length=255)
+     */
+    private $avis;
+
 
 
 
@@ -110,29 +123,6 @@ class Comments
         return $this->date_comment;
     }
 
-    /**
-     * Set user
-     *
-     * @param \User\UserBundle\Entity\Users $user
-     *
-     * @return Comments
-     */
-    public function setUser(\User\UserBundle\Entity\Users $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \User\UserBundle\Entity\Users
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
 
 
@@ -182,5 +172,53 @@ class Comments
     public function getCandidat()
     {
         return $this->candidat;
+    }
+
+    /**
+     * Set offre
+     *
+     * @param \Main\MainBundle\Entity\Offres $offre
+     *
+     * @return Comments
+     */
+    public function setOffre(\Main\MainBundle\Entity\Offres $offre = null)
+    {
+        $this->offre = $offre;
+    
+        return $this;
+    }
+
+    /**
+     * Get offre
+     *
+     * @return \Main\MainBundle\Entity\Offres
+     */
+    public function getOffre()
+    {
+        return $this->offre;
+    }
+
+    /**
+     * Set avis
+     *
+     * @param string $avis
+     *
+     * @return Comments
+     */
+    public function setAvis($avis)
+    {
+        $this->avis = $avis;
+    
+        return $this;
+    }
+
+    /**
+     * Get avis
+     *
+     * @return string
+     */
+    public function getAvis()
+    {
+        return $this->avis;
     }
 }

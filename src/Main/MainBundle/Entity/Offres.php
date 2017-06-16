@@ -139,11 +139,7 @@ class Offres
      */
     public $candidat;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Main\MainBundle\Entity\Comments", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $commentaires;
+
 
     /**
      * Get id
@@ -501,41 +497,7 @@ class Offres
     {
         $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-    /**
-     * Add commentaire
-     *
-     * @param \Main\MainBundle\Entity\Comments $commentaire
-     *
-     * @return Offres
-     */
-    public function addCommentaire(\Main\MainBundle\Entity\Comments $commentaire)
-    {
-        $this->commentaires[] = $commentaire;
     
-        return $this;
-    }
-
-    /**
-     * Remove commentaire
-     *
-     * @param \Main\MainBundle\Entity\Comments $commentaire
-     */
-    public function removeCommentaire(\Main\MainBundle\Entity\Comments $commentaire)
-    {
-        $this->commentaires->removeElement($commentaire);
-    }
-
-    /**
-     * Get commentaires
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCommentaires()
-    {
-        return $this->commentaires;
-    }
-
     /**
      * Set user
      *
@@ -560,29 +522,7 @@ class Offres
         return $this->user;
     }
 
-    /**
-     * Set entreprise
-     *
-     * @param \User\UserBundle\Entity\Entreprise $entreprise
-     *
-     * @return Offres
-     */
-    public function setEntreprise(\User\UserBundle\Entity\Entreprise $entreprise = null)
-    {
-        $this->entreprise = $entreprise;
-    
-        return $this;
-    }
 
-    /**
-     * Get entreprise
-     *
-     * @return \User\UserBundle\Entity\Entreprise
-     */
-    public function getEntreprise()
-    {
-        return $this->entreprise;
-    }
 
     /**
      * Set candidat
@@ -606,5 +546,31 @@ class Offres
     public function getCandidat()
     {
         return $this->candidat;
+    }
+
+    
+
+    /**
+     * Set entreprise
+     *
+     * @param \User\UserBundle\Entity\Entreprise $entreprise
+     *
+     * @return Offres
+     */
+    public function setEntreprise(\User\UserBundle\Entity\Entreprise $entreprise = null)
+    {
+        $this->entreprise = $entreprise;
+    
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return \User\UserBundle\Entity\Entreprise
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
     }
 }
