@@ -59,7 +59,6 @@ class OffresController extends Controller
                 {
                     $commentDone = 1;
                     $value =  $em->getRepository('MainBundle:Comments')->findOneByEntreprise($user);
-                    var_dump($value);
                     return $this->render('MainBundle:Default:Offres\offre.html.twig', array(
                         "offre"=> $offre,
                         'form'=>$form->createView(),

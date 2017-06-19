@@ -32,7 +32,7 @@ class ProfileController extends BaseController
      */
     public function showAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        /*$em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $offres = $em->getRepository('MainBundle:Offres')->findAll();
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -40,6 +40,38 @@ class ProfileController extends BaseController
         }
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
+            'user' => $user,
+            'offres' => $offres
+        ));*/
+
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $offres = $em->getRepository('MainBundle:Offres')->findAll();
+        foreach ($user as $userC){
+            if($userC->getCandidat() != null)
+            {
+                if($userC->getCandidat() == $user)
+                {
+                    
+                    return $this->render('@FOSUser/Profile/show2.html.twig', array(
+            'user' => $user,
+            'offres' => $offres
+        ));
+                }
+            }
+            else if($userC->getEntreprise() != null)
+            {
+                if($userC->getEntreprise() == $user)
+                {
+                    
+                    return $this->render('@FOSUser/Profile/show.html.twig', array(
+            'user' => $user,
+            'offres' => $offres
+        ));
+                }
+            }
+        }
+        return $this->render('@FOSUser/Profile/show2.html.twig', array(
             'user' => $user,
             'offres' => $offres
         ));
