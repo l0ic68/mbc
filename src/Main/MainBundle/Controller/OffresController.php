@@ -58,7 +58,7 @@ class OffresController extends Controller
                 if($userC->getEntreprise() == $user)
                 {
                     $commentDone = 1;
-                    $value =  $em->getRepository('MainBundle:Comments')->findOneByEntreprise($userC);
+                    $value =  $em->getRepository('MainBundle:Comments')->findOneByEntreprise($user);
                     var_dump($value);
                     return $this->render('MainBundle:Default:Offres\offre.html.twig', array(
                         "offre"=> $offre,
