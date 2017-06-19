@@ -22,10 +22,11 @@ class OffresController extends Controller
         /*$em = $this->getDoctrine()->getManager();
         $offres = $em->getRepository('MainBundle:Offres')->find($id);
         return $this->render('MainBundle:Default:layout\offre.html.twig');*/
-
+        $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $offre = $em->getRepository('MainBundle:Offres')->find($id);
         $comments = $em->getRepository('MainBundle:Comments')->findByOffre($id);
+
         $price = $offre->getPrice();
         $offre->setPrice($price + 1);
         $em->persist($offre);
@@ -33,8 +34,50 @@ class OffresController extends Controller
         $medias = $em->getRepository('MainBundle:Offres')->findByMedia($id);
         $form = $this->createForm(new OffreType());
         $form_Media = $this->createForm(new MediaType());
-
-        return $this->render('MainBundle:Default:Offres\offre.html.twig',array("offre"=> $offre,'form'=>$form->createView(),"medias"=>$medias,'form_Media'=>$form_Media->createView(),'comments'=> $comments));
+        $users = $em->getRepository('MainBundle:Comments')->findByOffre($id);
+        $commentDone = 0;
+        foreach ($users as $userC){
+            if($userC->getCandidat() != null)
+            {
+                if($userC->getCandidat() == $user)
+                {
+                    $commentDone = 1;
+                    $value =  $em->getRepository('MainBundle:Comments')->findOneByCandidat($user);
+                    return $this->render('MainBundle:Default:Offres\offre.html.twig', array(
+                        "offre"=> $offre,
+                        'form'=>$form->createView(),
+                        "medias"=>$medias,
+                        'form_Media'=>$form_Media->createView(),
+                        'comments'=> $comments,
+                        'value'=>$value,
+                        'commentDone'=>$commentDone));
+                }
+            }
+            else if($userC->getEntreprise() != null)
+            {
+                if($userC->getEntreprise() == $user)
+                {
+                    $commentDone = 1;
+                    $value =  $em->getRepository('MainBundle:Comments')->findOneByEntreprise($userC);
+                    var_dump($value);
+                    return $this->render('MainBundle:Default:Offres\offre.html.twig', array(
+                        "offre"=> $offre,
+                        'form'=>$form->createView(),
+                        "medias"=>$medias,
+                        'form_Media'=>$form_Media->createView(),
+                        'comments'=> $comments,
+                        'value'=>$value,
+                        'commentDone'=>$commentDone));
+                }
+            }
+        }
+        return $this->render('MainBundle:Default:Offres\offre.html.twig',array(
+            "offre"=> $offre,
+            'form'=>$form->createView(),
+            "medias"=>$medias,
+            'form_Media'=>$form_Media->createView(),
+            'comments'=> $comments,
+            'commentDone'=>$commentDone));
     }
 
     public function offresAction()
@@ -81,7 +124,7 @@ class OffresController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $offre = $em->getRepository('MainBundle:Offres')->findOneById($id);
-            
+            $users = $em->getRepository('MainBundle:Comments')->findByOffre($id);
             $comment = new Comments();
             $comment->setComment($commentSite);
             $comment->setOffre($offre);
@@ -98,9 +141,52 @@ class OffresController extends Controller
             $em->persist($comment);
             $em->flush();
             $comments = $em->getRepository('MainBundle:Comments')->findByOffre($id);
+            $commentDone = 1;
+            $value =$commentSite;
             $content = $this->RenderView('MainBundle:Default:Offres\commentOffre.html.twig', array(
                 'offre' => $offre,
                 'comments'=>$comments,
+                'commentDone'=>$commentDone,
+                'value'=>$value,
+            ));
+            $response = new JsonResponse();
+            $response->setData(array('classifiedList' => $content));
+            return $response;
+        }
+    }
+    public function commentModifAction()
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if( $user != "anon.") {
+            $request = $this->container->get('request');
+            $id = $request->query->get('id');
+            $commentSite = $request->query->get('comment');
+            $avis = $request->query->get('avis');
+
+            $em = $this->getDoctrine()->getManager();
+            $offre = $em->getRepository('MainBundle:Offres')->findOneById($id);
+            if($user instanceof Entreprise)
+            {
+                $commentModif = $em->getRepository('MainBundle:Comments')->findOneByEntreprise($user);
+            }
+            if($user instanceof Candidat)
+            {
+                $commentModif = $em->getRepository('MainBundle:Comments')->findOneByCandidat($user);
+            }
+            $commentModif->setComment($commentSite);
+            $commentModif->setDateComment(new \DateTime("now"), new \DateTimeZone('Europe/Paris'));
+            $commentModif->setAvis($avis);
+
+            $em->persist($commentModif);
+            $em->flush();
+            $value = $commentSite;
+            $commentDone = 1;
+            $comments = $em->getRepository('MainBundle:Comments')->findByOffre($id);
+            $content = $this->RenderView('MainBundle:Default:Offres\commentOffre.html.twig', array(
+                'offre' => $offre,
+                'comments'=>$comments,
+                'commentDone'=>$commentDone,
+                'value'=>$value,
             ));
             $response = new JsonResponse();
             $response->setData(array('classifiedList' => $content));
