@@ -1,0 +1,80 @@
+{% extends "::layout/layout.html.twig" %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/publication.css') }}" />
+{% endblock %}
+{% block body %}
+<div class="section no-pad-bot " id="index-banner" style="padding-top:90px">
+    <div class="  full-width z-depth-2">
+      <div class="row center">
+        <div class="col m12 back-img white">
+          <div>
+            <h4 class="gray marg-top bold">Nom demande</h4>
+            <div class="col m12">
+              <div class="col m4">
+                <div class="col m12">
+                  <img class="materialboxed z-depth-2 equipe circle img-center" data-caption="Nom prénom fonction" width="250" height="250" src="{{asset(demande.media.path)}}">
+                </div>
+                <div class="col m12 marg">
+                  <span class="bold">{{demande.user.nom}} {{demande.user.prenom}}</span>
+                </div>
+                <div class="col m12">
+                  <span class="italic">{{demande.title}}</span>
+                </div>
+                <div class="col m12">
+                  <a href="{{demande.linkedinlink}}"> <img class="picto-in" src="{{ asset('img/picto/linkedin-letters.png') }}"> </a>
+                  <a href="{{demande.user.email}}"> <img class="picto-mail" src="{{ asset('img/picto/mail.png') }}"> </a>
+                </div>
+              </div>
+              <div class="col m4">
+              <div class="col m12 marg-bottom"></div>
+              <div class="col m12">
+                <span class="bold" style="text-align: justify;">Bio :{{demande.description}}</span>
+            </div>
+              </div>
+              <div class="col m4">
+                <div class="col m12 marg-bottom"></div>
+                <div class="col m12 marg-bottom"></div>
+                <div class="col m12 marg-bottom"></div>
+                <div class="col m12">
+                  <a class="waves-effect waves-light btn-large"><i class="material-icons left">play_for_work</i>Curiculum Vitae</a>
+                </div>
+                
+              </div>
+              
+              
+              <div class="col m12 marg-bottom"></div>
+            </div>
+          </div>
+          <hr>
+            <div class="col m12">
+                <h4 class="gray marg-top bold">Informations personnelles</h4>
+            </div>
+            <div class="col m12">
+                <span class="bold">nom:{{demande.user.nom}}</span>
+                <span class="bold">Prénom:{{demande.user.prenom}}</span>
+            </div>
+            <div class="col s12 marg-bottom"></div>
+            <div class="col m12">
+                <span class="bold">Téléphone :{{demande.user.phone}}</span>
+                </div>
+                <div class="col s12 marg-bottom"></div>
+            <div class="col m12">
+                <span class="bold">Adresse :{{demande.user.adresse}}</span>
+            </div>
+            <div class="col s12 marg-bottom"></div>
+            <div class="col m12">
+                <span class="bold">Code postal :{{demande.user.codepostal}}</span>
+            </div>
+            <!--<div class="col m12">
+                <span class="bold">Bio :{#{demande.description}#}</span>
+            </div>-->
+            
+                <div class="col m12 marg-bottom"></div>
+                
+        </div>
+      </div>
+    </div>
+  </div>	
+
+
+{% endblock %}
