@@ -20,10 +20,16 @@
 <!-- Dropdown menu  -->
 <ul id="dropdown1" class="dropdown-content drop-width">
     {#<li><a href="{{ path("fos_user_registration_register") }}">Inscription</a></li>#}
+    {% if(app.user != null) %}
+    <li><a href="{{ path("fos_user_profile_show") }}">Mon compte</a></li>
+    <li><a href="{{ path('retours', {'id': app.user.id }) }}">Mes messages</a></li>
+    {% else %}
     <li><a href="{{ path("fos_user_security_login") }}">Se connecter</a></li>
-    <li><a href="{{ path("fos_user_security_login") }}">Mon compte</a></li>
-    <li class="divider"></li>
-    <li><a href="{{ path("mentions_legales") }}">mentions légales</a></li>
+    <li><a href="{{ path("entreprise_registration") }}">s'inscrire en tant qu'entreprise</a></li>
+    <li><a href="{{ path("candidat_registration") }}">s'inscrire en tant que particulier</a></li>
+    {% endif %}
+    <!--<li class="divider"></li>
+    <li><a href="{{ path("mentions_legales") }}">mentions légales</a></li>-->
 </ul>
 <!-- Menu burger -->
 <ul id="slide-out" class="side-nav">
@@ -59,7 +65,7 @@
             <li><a href="{{ path("main_homepage") }}" class="color-a">Home</a></li>
             <li><a href="{{ path("offres") }}" class="color-a">Offres</a></li>
             <li><a href="{{ path("demandes") }}" class="color-a">Demandes</a></li>
-            <li><a href="{{ path("contact") }}" class="color-a">Contact</a></li>
+            <!--<li><a href="{{ path("contact") }}" class="color-a">Contact</a></li>-->
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1" ><i class="material-icons color-a">more_vert</i></a></li>
         </ul>
 
