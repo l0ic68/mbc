@@ -105,7 +105,7 @@ class Media
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;
-        $this->setPath('/img/'.$file->getClientOriginalName());
+        $this->setPath('img/'.$file->getClientOriginalName());
         // On vérifie si on avait déjà un fichier pour cette entité
         if (null !== $this->url) {
             // On sauvegarde l'extension du fichier pour le supprimer plus tard

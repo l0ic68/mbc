@@ -26,7 +26,9 @@
 	<i class="material-icons marg-le colo-gray">work</i>Commercial | {{offre.category}}
 	<i class="material-icons marg-le colo-gray">location_on</i>Strasbourg | {{offre.location}}
 	<i class="material-icons marg-le colo-gray">web</i><a href="#!">Nom du site {{offre.websitelink}}</a>
+            {% if(app.user != null) %}
 	<a href="{{ path('enquiryform', {'id': app.user.id }) }}" class="btn">Contactez la personne</a>
+            {% endif %}
 	<hr>
 	<div class="col s12 m12 l12 card-action">
 	<span>
