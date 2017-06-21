@@ -78,13 +78,13 @@ class Demandes
      */
     public $media;
 
-        /**
+    /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     public $user;
 
-            /**
+    /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Entreprise", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */

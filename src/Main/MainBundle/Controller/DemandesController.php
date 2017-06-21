@@ -21,11 +21,16 @@ class DemandesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $demande = $em->getRepository('MainBundle:Demandes')->find($id);
+        $price = $demande->getPrice();
+        $demande->setPrice($price + 1);
+        $em->persist($demande);
+        $em->flush();
         $medias = $em->getRepository('MainBundle:Demandes')->findByMedia($id);
+        $user = $this->getUser();
         $form = $this->createForm(new DemandeType());
         $form_Media = $this->createForm(new MediaType());
 
-        return $this->render('MainBundle:Default:Demandes\demande.html.twig',array("demande"=> $demande,'form'=>$form->createView(),"medias"=>$medias,'form_Media'=>$form_Media->createView()));
+        return $this->render('MainBundle:Default:Demandes\demande.html.twig',array("demande"=> $demande,'form'=>$form->createView(),"medias"=>$medias,'form_Media'=>$form_Media->createView(),"user"=> $user));
     }
 
     public function demandesAction()
@@ -141,4 +146,10 @@ class DemandesController extends Controller
             return $response;
         }
     }
+
+    /*public function EnquiryAction($name)
+    {
+        $form_Enquiry = $this->createForm(new EnquiryType());
+
+    }*/
 }

@@ -11,6 +11,11 @@ contact:
     defaults: { _controller: MainBundle:Default:contact }
     requirements:
             _method:  GET|POST
+
+enquiry:
+    path:     /enquiry/{id}
+    defaults: { _controller: MainBundle:Default:enquiry }
+
 search:
     path:     /search
     defaults: { _controller: MainBundle:Search:searchTreat }
@@ -75,3 +80,12 @@ demandes:
 demande:
     path:     /demande/{id}
     defaults: { _controller: MainBundle:Demandes:demande }
+
+enquiryform:
+    path:     /enquiry/{id}
+    defaults: { _controller: MainBundle:Default:enquiry }
+
+retours:
+    path:     /retours/{id}
+    defaults: { _controller: MainBundle:Default:retour }
+      

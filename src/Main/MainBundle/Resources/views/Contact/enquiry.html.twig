@@ -1,0 +1,64 @@
+{% extends "::layout/layout.html.twig" %}
+{% block stylesheets %}
+<link href="{{ asset('css/style-resplog.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <div class="containerperso marg-center z-depth-2" style="padding-top: 80px">
+    <div class="section">
+      <div class="row">
+      <h4 class="center degrade2 ">Entrez en contact avec la personne de l'annonce</h4>
+
+          <form class="form-horizontal" action="{{ path('enquiry', {'id': user.id}) }}" method="post"  {{ form_enctype(form) }} id="enquiry_form">
+              {{ form_start(form) }}
+
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+         {{ form_widget(form.lastname) }}
+          <label for="icon_prefix">Nom</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+        {{ form_widget(form.firstname) }}
+          <label for="icon_telephone">Prénom</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">email</i>
+        {{ form_widget(form.email) }}
+          <label for="email" data-error="wrong" data-success="right">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+         {{ form_widget(form.phone) }}
+          <label for="icon_prefix">Téléphone</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">question_answer</i>
+            {{ form_widget(form.subject) }}
+          <label for="icon_prefix">Sujet</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">mode_edit</i>
+            {{ form_widget(form.message) }}
+          <label for="icon_prefix2">Votre message</label>
+        </div>
+        <div class="input-field col s12">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Joindre un Fichier</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                    {{ form_widget(form.media) }}
+                </div>
+              </div>
+
+        </div>
+          {{ form_end(form) }}
+          </form>
+    </div>
+    </div>
+  </div>
+  <!--end of the new block-->
+{% endblock %}
+
