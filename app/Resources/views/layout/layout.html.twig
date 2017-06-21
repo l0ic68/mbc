@@ -22,7 +22,7 @@
     {#<li><a href="{{ path("fos_user_registration_register") }}">Inscription</a></li>#}
     {% if(app.user != null) %}
     <li><a href="{{ path("fos_user_profile_show") }}">Mon compte</a></li>
-    <li><a href="{{ path("fos_user_security_login") }}">Mes messages</a></li>
+    <li><a href="{{ path('retours', {'id': app.user.id }) }}">Mes messages</a></li>
     {% else %}
     <li><a href="{{ path("fos_user_security_login") }}">Se connecter</a></li>
     <li><a href="{{ path("entreprise_registration") }}">s'inscrire en tant qu'entreprise</a></li>
