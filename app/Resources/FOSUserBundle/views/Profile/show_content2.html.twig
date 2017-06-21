@@ -17,6 +17,8 @@
     <a href ="{{ path('fos_user_profile_edit') }}" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Modifier vos informations</a>
 
     <p>PAGE 2</p>
+    <a href="{{ path('retours', {'id': app.user.id }) }}" class="btn">regardez les retours de vos annonces (chiffre total de retours : x)</a>
+    <p>PAGE 2</p>
 
     
 </div>
@@ -35,7 +37,7 @@
             <tbody>
         {% for offre in offres %}
           <tr>
-            <td>{{offre.name}}</td>
+            <td><a href="{{ path('entreprise_edit', { 'id': offre.id }) }}">{{ offre.name }}</a></td>
             <td>{{offre.description | slice(0, 30)}}</td>
             <td>{{offre.price}}</td>
             <td>{{offre.dateOffre|date("d/m/Y", "Europe/Paris")}}</td>

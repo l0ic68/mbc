@@ -1,0 +1,182 @@
+{% extends "::layout/layout.html.twig" %}
+{% block stylesheets %}
+    <link href="{{ asset('css/gallery-materialize.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style_custom_offres.css') }}" />
+{% endblock %}
+{% block body %}
+
+    <!-- Gallery -->
+    <div id="portfolio" class="section gray offsetkiwi">
+        <div class="container">
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-button btn' href='#' data-activates='dropdown2'>Filtrer les demandes</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown2' class='dropdown-content'>
+                <li><button class="btn waves-effect waves-teal search" value="Strasbourg">Strasbourg</button></li>
+                <li><button class="btn waves-effect waves-teal search" value="Paris">Paris</button></li>
+                <li><button class="btn waves-effect waves-teal search" value="Allemagne">Allemagne</button></li>
+                <li><button class="btn waves-effect waves-teal search" value="Colmar">Colmar</button></li>
+                <li><button class="btn waves-effect waves-teal search" value="Urschenheim">Urschenheim</button></li>
+                <li><button class="btn waves-effect waves-teal search" value="ALL">ALL</button></li>
+            </ul>
+
+            <div class="gallery row">
+
+                <!-- Dropdown Structure -->
+
+                {% for demande in demandes %}
+                <div class="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
+                    <div class="gallery-curve-wrapper">
+                        <a class="gallery-cover gray">
+                            {#<img class="responsive-img " src="/monbatiment/web{{ asset(demande.media.path) }}" alt="placeholder">#}
+                            <a href="{{ path('demande', { 'id': demande.id }) }}"> <img class="responsive-img " src="{{ asset(demande.media.path) }}" alt="placeholder"></a>
+                        </a>
+                        <div class="gallery-header">
+                            <span><a href="{{ path('demande', { 'id': demande.id }) }}">{{ demande.name }}</a></span>
+                        </div>
+                        <!--
+                        <div class="gallery-body">
+                            <div class="title-wrapper">
+                                <h3 class="degrade2">{{ demande.name }}</h3>
+                                <span class="price">{{ demande.name }}</span>
+                            </div>
+                            <div class="gallery-action fixed-action-btn horizontal click-to-toggle" >
+                                <a class="btn-floating btn-large waves-effect waves-light pulse"><i class="material-icons">info_outline</i></a>
+
+                                <ul>
+
+                                    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                                    <li class="col m10 center ">
+                                        <div class="col m12 white z-depth-2 pad">
+                                            <div class="col m12"><a href="#!">41 rue de baldenheim, Wittisheim 67820</a></div>
+                                            <div class="col m12"><a href="#!">06 33 81 67 45</a></div>
+                                            <div class="col m12"><a href="#!">l.waamh@gmail.com</a></div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <p class="description">
+                            {{ demande.description }}
+
+                            <div class="carousel-wrapper">
+                                <div class="carousel">
+                                    <a class="carousel-item " href="#one!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                                    <a class="carousel-item " href="#two!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                                    <a class="carousel-item " href="#three!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                                    <a class="carousel-item " href="#four!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                                    <a class="carousel-item " href="#five!"><img src="{{ asset('img/6797943-hdr-city-background.jpg')}}"></a>
+                                </div>
+                            </div>
+
+                            <span class="col m12 center degrade2">
+                 Information
+                </span>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input disabled value="41 rue de baldenheim 67820 Wittisheim" id="disabled" type="text" class="validate">
+                                    <label for="disabled">Adresse</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input disabled value="06 33 81 67 45" id="disabled" type="text" class="validate">
+                                    <label for="disabled">Téléphone</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input disabled value="l.waamh@gmail.com" id="disabled" type="text" class="validate">
+                                    <label for="disabled">Mail</label>
+                                </div>
+                            </div>
+                            <span class="col m12 center degrade2">
+                  Partie note et commentaire
+                </span>
+
+                            <ul class="collection">
+                                <li class="collection-item avatar">
+                                    <img src="{{ asset('img/ANONYMAT-DU-WEB-.jpg')}}" alt="" class="circle">
+                                    <span class="title">Nom</span>
+                                    <p>Super entreprise, boulot nikel wesh
+                                    </p>
+                                    <a href="#!" class="secondary-content"><i class="material-icons color-green">thumb_up</i></a>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <img src="{{ asset('img/ANONYMAT-DU-WEB-.jpg')}}" alt="" class="circle">
+                                    <span class="title">Nom</span>
+                                    <p>Super entreprise, boulot nikel wesh
+                                    </p>
+                                    <a href="#!" class="secondary-content"><i class="material-icons color-green">thumb_up</i></a>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <img src="{{ asset('img/ANONYMAT-DU-WEB-.jpg')}}" alt="" class="circle">
+                                    <span class="title">Nom</span>
+                                    <p>c'est de la merde</p>
+                                    <a href="#!" class="secondary-content"><i class="material-icons color-red">thumb_down</i></a>
+                                </li>
+
+                            </ul>
+                            <span class="col m12 center degrade2">
+                  Ajouter un commantaire
+                </span>
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="switch marg-bot">
+                                            <label>
+                                                <i class="material-icons color-green">thumb_up</i>
+                                                <input type="checkbox">
+                                                <span class="lever"></span>
+                                                <i class="material-icons color-red">thumb_down</i>
+                                            </label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix degrade2">mode_edit</i>
+                                            <textarea id="icon_prefix2" class="materialize-textarea" data-length="120"></textarea>
+                                            <label for="icon_prefix2">First Name</label>
+                                        </div>
+                                        <button class="btn waves-effect waves-light color" type="submit" name="action">Envoyer
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div><!-- /.container -->
+
+
+    {% block javascripts %}
+        <!--<script src="{{ asset ('js/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ asset ('js/masonry.pkgd.min.js') }}"></script>
+        <script src="{{ asset ('js/color-thief.min.js') }}"></script>
+        <script src="{{ asset ('js/galleryExpand.js') }}"></script>
+        <script src="{{ asset ('js/init.js') }}"></script>-->
+
+        <script type="text/javascript">
+            $(function(){
+                $('.search').on('click', function()
+                {
+                    var comment = $(this).val();
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "{{ path('searchOffres') }}",
+                        cache: false,
+                        data: { text: comment},
+                        success:function(response){
+                            $('.gallery').replaceWith(response.classifiedList);
+                        },
+                        error:function(response){
+                            console.log(response);
+                        }
+                    });
+                });
+            });
+
+        </script>
+    {% endblock %}
+
+{% endblock %}

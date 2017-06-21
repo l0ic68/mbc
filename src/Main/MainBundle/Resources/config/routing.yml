@@ -11,6 +11,11 @@ contact:
     defaults: { _controller: MainBundle:Default:contact }
     requirements:
             _method:  GET|POST
+
+enquiry:
+    path:     /enquiry/{id}
+    defaults: { _controller: MainBundle:Default:enquiry }
+
 search:
     path:     /search
     defaults: { _controller: MainBundle:Search:searchTreat }
@@ -54,3 +59,45 @@ delete_offre:
 add_offre:
     path:     /add_offre
     defaults: { _controller: MainBundle:OffreAdmin:add_offre }
+
+entreprise_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Crud:index" }
+    methods:  GET
+
+entreprise_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Crud:show" }
+    methods:  GET
+
+entreprise_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Crud:new" }
+    methods:  [GET, POST]
+
+entreprise_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Crud:edit" }
+    methods:  [GET, POST]
+
+entreprise_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Crud:delete" }
+    methods:  DELETE
+
+demandes:
+    path:     /demandes
+    defaults: { _controller: MainBundle:Demandes:demandes }
+
+demande:
+    path:     /demande/{id}
+    defaults: { _controller: MainBundle:Demandes:demande }
+
+enquiryform:
+    path:     /enquiry/{id}
+    defaults: { _controller: MainBundle:Default:enquiry }
+
+retours:
+    path:     /retours/{id}
+    defaults: { _controller: MainBundle:Default:retour }
+      
