@@ -24,21 +24,41 @@ class UserData extends AbstractFixture implements FixtureInterface, ContainerAwa
         $discriminator->setClass('User\UserBundle\Entity\Candidat');
 
         $userManager = $this->container->get('pugx_user_manager');
-
         $user = $userManager->createUser();
         $role = array('ROLE_ADMIN');
-
         $user->setRoles($role);
-        $user->setUsername('loic');
+        $user->setUsername('loic.oulerich@viacesi.fr');
         $user->setNom('loic');
         $user->setPrenom('loic');
+        $user->setMetier('chomeur');
+        $user->setAdresse('Colmar');
+        $user->setCodepostal('67540');
         $user->setPhone('loic');
-        $user->setEmail('test.test@test.test');
+        $user->setEmail('loic.oulerich@viacesi.fr');
         $user->setPassword($this->container->get('security.encoder_factory')->getEncoder($user)->encodePassword('test', $user->getSalt()));
         $user->setEnabled(1);
 //        $user->setMedia($this->getReference('ascampus'));
         $userManager->updateUser($user);
 //
+        $discriminator->setClass('User\UserBundle\Entity\Entreprise');
+
+        $userManager = $this->container->get('pugx_user_manager');
+        $user2 = $userManager->createUser();
+        $role = array('ROLE_ADMIN');
+        $user2->setRoles($role);
+        $user2->setUsername('maxiloic@gmail.com');
+        $user2->setNomInterlocuteur('loic');
+        $user2->setNomEntreprise('INFO');
+        $user2->setSecteur('chomeur');
+        $user2->setPositionInterlocuteur('chomeur');
+        $user2->setAdresse('Colmar');
+        $user2->setCodepostal('67540');
+        $user2->setEmail('maxiloic@gmail.com');
+        $user2->setMessage('COUCOUCOCUCOUCOU');
+        $user2->setPassword($this->container->get('security.encoder_factory')->getEncoder($user)->encodePassword('test', $user->getSalt()));
+        $user2->setEnabled(1);
+//        $user->setMedia($this->getReference('ascampus'));
+        $userManager->updateUser($user2);
 //        $user_client = new User();
 //        $user_client->setRoles($role);
 //        $user_client->setEmail('client@mail.fr');
@@ -58,12 +78,11 @@ class UserData extends AbstractFixture implements FixtureInterface, ContainerAwa
 //
 //        $manager->flush();
 //
-//        $this->addReference('user_test', $user_test);
-//        $this->addReference('user_client', $user_client);
-//        $this->addReference('user_entreprise', $user_entreprise);
+        $this->addReference('user_entreprise', $user2);
+        $this->addReference('user_client', $user);
     }
     public function getOrder()
     {
-        return 6;
+        return 2;
     }
 }

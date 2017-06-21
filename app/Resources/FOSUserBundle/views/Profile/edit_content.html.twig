@@ -1,8 +1,125 @@
 {% trans_default_domain 'FOSUserBundle' %}
+    {% block stylesheets %}
+        <link href="{{ asset('css/style-resplog.css') }}" rel="stylesheet">
+    {% endblock %}
+{% block fos_user_content %}
 
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-    </div>
-</form>
+    {% if app.user.nomEntreprise is defined%}
+        <div class="background-img">
+        <div class="containerperso marg-center z-depth-2">
+            <div class="section">
+                <div class="row">
+                    <h4 class="center degrade2 ">Edit Entreprise</h4>
+                    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST">
+                        {#{{ form_start(form) }}#}
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix degrade4">info</i>
+                            {{ form_widget(form.nomEntreprise) }}
+                            <label for="email" data-error="wrong" data-success="right">Nom de l'entreprise</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix degrade4">info</i>
+                            {{ form_widget(form.secteur) }}
+                            <label for="icon_prefix ">Secteur d'activité</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix degrade4">account_circle</i>
+                            {{ form_widget(form.nomInterlocuteur) }}
+                            <label for="email" data-error="wrong" data-success="right">Nom de l'interlocuteur</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix degrade4">info</i>
+                            {{ form_widget(form.positionInterlocuteur) }}
+                            <label for="icon_prefix ">Position de l'interlocuteur</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix degrade4">markunread_mailbox</i>
+                            {{ form_widget(form.adresse) }}
+                            <label for="email" data-error="wrong" data-success="right">Adresse</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix degrade4">markunread_mailbox</i>
+                            {{ form_widget(form.codePostal) }}
+                            <label for="icon_prefix ">Code postal</label>
+                        </div>
+                        {{ form_row(form._token) }}
+                        <button class="marg-center2 btn waves-effect waves-light degrade3 z-depth-2" type="submit"  name="submit">
+                            Modifier
+                            <i class="material-icons right">send</i>
+                        </button>
+                        {#{{ form_end(form) }}#}
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    {% else %}
+        <div class="background-img">
+        <div class="containerperso marg-center z-depth-2">
+        <div class="section">
+            <div class="row">
+                <h4 class="center degrade2 ">Inscription Candidat</h4>
+                <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix degrade4">account_circle</i>
+                        {{ form_widget(form.nom) }}
+                        <label for="email" data-error="wrong" data-success="right">Nom</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix degrade4">account_circle</i>
+                        {{ form_widget(form.prenom) }}
+                        <label for="icon_prefix ">Prénom</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix degrade4">phone</i>
+                        {{ form_widget(form.phone) }}
+                        <label for="email" data-error="wrong" data-success="right">N° tél</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix degrade4">info</i>
+                        {{ form_widget(form.metier) }}
+                        <label for="icon_prefix ">corps de métier</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix degrade4">markunread_mailbox</i>
+                        {{ form_widget(form.adresse) }}
+                        <label for="email" data-error="wrong" data-success="right">Adresse</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix degrade4">markunread_mailbox</i>
+                        {{ form_widget(form.codePostal) }}
+                        <label for="icon_prefix ">Code postal</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Changer votre CV</span>
+                                <input type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                                {{ form_widget(form.media) }}
+                            </div>
+                        </div>
+                        {{ form_row(form._token) }}
+                        <button class="marg-center2 btn waves-effect waves-light degrade3 z-depth-2" type="submit" name="action">Modifier
+                            <i class="material-icons right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock fos_user_content %}

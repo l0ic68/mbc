@@ -116,25 +116,25 @@ class Offres
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     public $media;
 
         /**
-     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     public $user;
 
             /**
-     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Entreprise", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Entreprise", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     public $entreprise;
 
             /**
-     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Candidat", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Candidat", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     public $candidat;

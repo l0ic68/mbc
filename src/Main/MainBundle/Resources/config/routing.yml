@@ -41,4 +41,16 @@ mentions_legales:
 
 conseils:
     path:     /conseils/{id}
-    defaults: { _controller: MainBundle:Tips:tip }   
+    defaults: { _controller: MainBundle:Tips:tip }
+
+edit_offre:
+    path:     /edit_offre/{id}
+    defaults: { _controller: MainBundle:OffreAdmin:edit_offre }
+
+delete_offre:
+    path:     /delete_offre/{id}
+    defaults: { _controller: MainBundle:OffreAdmin:delete_offre }
+
+add_offre:
+    path:     /add_offre
+    defaults: { _controller: MainBundle:OffreAdmin:add_offre }

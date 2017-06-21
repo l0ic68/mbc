@@ -1,0 +1,52 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/publication.css') }}" />
+{% endblock %}
+    {{ form_start(form) }}
+<section class="parallax-container parallax-container2 index rbga">
+    <div class="parallax z-depth-2 ">
+        <img class="img-back " src="https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450">
+    </div>
+
+</section>
+<div class="row ">
+    <div class="col m6 marg-titre">
+        <h2 class="white-text">Title | {{ form_widget(form.name) }}</h2>
+        <p class="white-text">{{ form_widget(form.descriptionpost) }}</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12 l12 white">
+            <!--<img class="responsive-img" src="../assets/img/blog3.jpg">-->
+            <h4 class="colo-gray">Titre du poste | {{ form_widget(form.title) }}</h4>
+            <br>
+            <i class="material-icons colo-gray">today</i>28 Juin 2017<br><br><br><br>
+            <i class="material-icons marg-le colo-gray">work</i>Commercial | {{ form_widget(form.category) }}<br><br><br><br>
+            <i class="material-icons marg-le colo-gray">location_on</i>location | {{ form_widget(form.location) }}<br><br><br><br>
+            <i class="material-icons marg-le colo-gray">web</i><a href="#!">web | {{ form_widget(form.websitelink) }}</a><br><br><br><br>
+            <hr>
+            <div class="col s12 m12 l12 card-action">
+	<span>
+					<h4 class="colo-gray">Entreprise</h4>
+                    {{ form_widget(form.description) }}
+				</span>
+                <hr>
+                <span>
+					<h4 class="colo-gray">Mission</h4>
+                    {{ form_widget(form.descriptionmission) }}
+				</span>
+                <hr>
+                <h4 class="colo-gray">Profile recherché</h4>
+                <ul>
+                    {{ form_widget(form.descriptionprofilesearch) }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    {{ form_end(form) }}
+{% endblock %}

@@ -21,7 +21,7 @@ class OffresData extends AbstractFixture implements OrderedFixtureInterface
         $offre1->setTitle("Titre Offre 1");
         $offre1->setCategory("Informatique");
         $offre1->setWebsitelink("http://www.google.com");
-//        $offre1->setAuthor($this->getReference('user_test'));
+        $offre1->setEntreprise($this->getReference('user_entreprise'));
         $offre1->setLocation("Strasbourg");
         $offre1->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum");
         $offre1->setDateOffre(new \DateTime("13-05-2017 00:00"), new \DateTimeZone('Europe/Paris'));
@@ -35,7 +35,7 @@ class OffresData extends AbstractFixture implements OrderedFixtureInterface
 
         $offre2 = new Offres();
         $offre2->setDescriptionPost("Du texte important de sous catégorie ou autre à completer ici, 70 a 150 caractères. Blablablablablablablablbalbalbalbalbalablabalabalblzndfisdsjiifdijfsjifijffjiefzefzfezjefzfçejefzjjfzez |");
-//        $offre2->setAuthor($this->getReference('user_test'));
+        $offre2->setEntreprise($this->getReference('user_entreprise'));
         $offre2->setLocation("Paris");
         $offre2->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum");
         $offre2->setDescriptionCompany("Ils sont super sympa mon gars");
@@ -56,7 +56,7 @@ class OffresData extends AbstractFixture implements OrderedFixtureInterface
         $offre3 = new Offres();
         $offre3->setDescriptionPost("Du texte important de sous catégorie ou autre à completer ici, 70 a 150 caractères. Blablablablablablablablbalbalbalbalbalablabalabalblzndfisdsjiifdijfsjifijffjiefzefzfezjefzfçejefzjjfzez |");
         $offre3->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum");
-//        $offre3->setAuthor($this->getReference('user_test'));
+        $offre3->setEntreprise($this->getReference('user_entreprise'));
         $offre3->setLocation("Allemagne");
         $offre3->setDescriptionCompany("Ils sont super sympa mon gars");
         $offre3->setDescriptionMission("imprimante");
@@ -76,7 +76,7 @@ class OffresData extends AbstractFixture implements OrderedFixtureInterface
 
         $offre4 = new Offres();
         $offre4->setDescriptionPost("Du texte important de sous catégorie ou autre à completer ici, 70 a 150 caractères. Blablablablablablablablbalbalbalbalbalablabalabalblzndfisdsjiifdijfsjifijffjiefzefzfezjefzfçejefzjjfzez |");
-//        $offre4->setAuthor($this->getReference('user_test'));
+        $offre4->setEntreprise($this->getReference('user_entreprise'));
         $offre4->setLocation("Colmar");
         $offre4->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum");
         $offre4->setName("Offre 4");
@@ -96,7 +96,7 @@ class OffresData extends AbstractFixture implements OrderedFixtureInterface
         $offre5 = new Offres();
         $offre5->setDescriptionPost("Du texte important de sous catégorie ou autre à completer ici, 70 a 150 caractères. Blablablablablablablablbalbalbalbalbalablabalabalblzndfisdsjiifdijfsjifijffjiefzefzfezjefzfçejefzjjfzez |Post");
         $offre5->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum");
-//        $offre5->setAuthor($this->getReference('user_test'));
+        $offre5->setEntreprise($this->getReference('user_entreprise'));
         $offre5->setLocation("Urschenheim");
         $offre5->setDescriptionCompany("Ils sont super sympa mon gars");
         $offre5->setDescriptionMission("imprimante");

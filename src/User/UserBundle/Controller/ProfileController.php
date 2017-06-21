@@ -16,7 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-use User\UserBundle\Entity\Offre;
+use User\UserBundle\Entity\Candidat;
+use User\UserBundle\Entity\Entreprise;
+use Main\MainBundle\Entity\Offres;
 
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
@@ -44,37 +46,25 @@ class ProfileController extends BaseController
             'offres' => $offres
         ));*/
 
-        $user = $this->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $offres = $em->getRepository('MainBundle:Offres')->findAll();
-        foreach ($user as $userC){
-            if($userC->getCandidat() != null)
+
+            if($user instanceof Candidat)
             {
-                if($userC->getCandidat() == $user)
-                {
-                    
-                    return $this->render('@FOSUser/Profile/show2.html.twig', array(
-            'user' => $user,
-            'offres' => $offres
-        ));
-                }
-            }
-            else if($userC->getEntreprise() != null)
-            {
-                if($userC->getEntreprise() == $user)
-                {
-                    
+                    $offres = $em->getRepository('MainBundle:Offres')->findByCandidat($user);
                     return $this->render('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
             'offres' => $offres
         ));
-                }
             }
-        }
-        return $this->render('@FOSUser/Profile/show2.html.twig', array(
+            else if($user instanceof Entreprise)
+            {
+                    $offres = $em->getRepository('MainBundle:Offres')->findByEntreprise($user);
+                    return $this->render('@FOSUser/Profile/show2.html.twig', array(
             'user' => $user,
             'offres' => $offres
         ));
+            }
     }
 
     /**
