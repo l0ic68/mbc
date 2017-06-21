@@ -22,8 +22,8 @@ class ProfileEntrepriseFormType extends AbstractType
             ->add('nomInterlocuteur')
             ->add('positionInterlocuteur')
             ->add('adresse')
-            ->add('codePostal')
-            ->add('message') ;
+            ->add('codePostal');
+
 //            ->add('media', new MediaType(), array('label' => 'Image',
 //                'attr' => array('class' => 'custom-file-input',
 //                    'placeholder' => 'Image',)));

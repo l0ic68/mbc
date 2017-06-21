@@ -20,7 +20,7 @@ class OffreAdminController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $offre = $em->getRepository('MainBundle:Offres')->findOneById($id);
-        if( $offre->getUser() == $user)
+        if( $offre->getEntreprise() == $user)
         {
         $form= $this->createForm(new OffreAdminType(),$offre);
         if('POST' === $request->getMethod()) {

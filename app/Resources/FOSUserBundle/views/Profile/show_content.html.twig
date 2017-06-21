@@ -33,9 +33,7 @@
 
             <tbody>
         {% for offre in offres %}
-            {% if offre.user.id == app.user.id %}    
- 
-            
+            {% if offre.user.id == app.user.id %}
           <tr>
             <td>{{offre.name}}</td>
             <td>{{offre.description | slice(0, 30)}}</td>
