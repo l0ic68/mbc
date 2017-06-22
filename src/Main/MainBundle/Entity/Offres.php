@@ -121,11 +121,6 @@ class Offres
      */
     public $media;
 
-        /**
-     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    public $user;
 
             /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\Entreprise", cascade={"persist"})
@@ -497,32 +492,6 @@ class Offres
     {
         $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
-    /**
-     * Set user
-     *
-     * @param \Main\MainBundle\Entity\User $user
-     *
-     * @return Offres
-     */
-    public function setUser(\Main\MainBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Main\MainBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-
 
     /**
      * Set candidat

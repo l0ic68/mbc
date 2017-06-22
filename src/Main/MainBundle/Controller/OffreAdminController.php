@@ -52,6 +52,11 @@ class OffreAdminController extends Controller
         if( $offre->getEntreprise() == $user)
         {
                     // On l'enregistre notre objet $advert dans la base de données, par exemple
+            $comments = $em->getRepository('MainBundle:Comments')->findByOffre($id);
+            foreach ($comments as $comment)
+            {
+                $em->remove($comment);
+            }
                     $em = $this->getDoctrine()->getManager();
                     $em->remove($offre);
                     $em->flush();
