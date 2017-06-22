@@ -8,7 +8,7 @@
       <div class="row center">
         <div class="col m12 back-img white">
           <div>
-            <h4 class="gray marg-top bold">{{demande.user.nomdemande}}</h4>
+            <h4 class="gray marg-top bold">Nom de la demande{{ form_widget(form.name) }}</h4>
             <div class="col m12">
               <div class="col m4">
                 <div class="col m12">
@@ -18,17 +18,17 @@
                   <span class="bold">{{demande.user.nom}} {{demande.user.prenom}}</span>
                 </div>
                 <div class="col m12">
-                  <span class="italic">{{demande.user.metier}}</span>
+                  <span class="italic">{{demande.title}}</span>
                 </div>
                 <div class="col m12">
-                  <a href="{{demande.user.linkedinlink}}"> <img class="picto-in" src="{{ asset('img/picto/linkedin-letters.png') }}"> </a>
+                  <a href="{{demande.linkedinlink}}"> <img class="picto-in" src="{{ asset('img/picto/linkedin-letters.png') }}"> </a>
                   <a href="{{demande.user.email}}"> <img class="picto-mail" src="{{ asset('img/picto/mail.png') }}"> </a>
                 </div>
               </div>
               <div class="col m4">
               <div class="col m12 marg-bottom"></div>
               <div class="col m12">
-                <span class="bold" style="text-align: justify;">Bio :{{demande.user.descriptiondemande}}</span>
+                <span class="bold" style="text-align: justify;">Bio :{{demande.description}}</span>
             </div>
               </div>
               <div class="col m4">

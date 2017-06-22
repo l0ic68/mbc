@@ -23,6 +23,7 @@ class DemandesController extends Controller
         $demande = $em->getRepository('MainBundle:Demandes')->find($id);
         $price = $demande->getPrice();
         $demande->setPrice($price + 1);
+        
         $em->persist($demande);
         $em->flush();
         $medias = $em->getRepository('MainBundle:Demandes')->findByMedia($id);
@@ -37,7 +38,8 @@ class DemandesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $demandes = $em->getRepository('MainBundle:Demandes')->findAll();
-        return $this->render('MainBundle:Default:Demandes\demandes.html.twig',array("demandes"=> $demandes));
+        $user = $this->getUser();
+        return $this->render('MainBundle:Default:Demandes\demandes.html.twig',array("demandes"=> $demandes,"user"=> $user));
     }
 
     public function ajouterDemandeAction()

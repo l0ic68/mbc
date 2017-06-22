@@ -3,9 +3,11 @@
 namespace Main\MainBundle\Controller;
 
 use Main\MainBundle\Entity\Offres;
+use Main\MainBundle\Entity\Demandes;
 use User\UserBundle\Entity\Candidat;
 use User\UserBundle\Entity\Entreprise;
 use Main\MainBundle\Form\OffreAdminType;
+use Main\MainBundle\Form\DemandeAdminType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -93,6 +95,37 @@ class OffreAdminController extends Controller
             }
         }
         return $this->render('MainBundle:Admin:offre.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    public function Add_DemandeAction(Request $request)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $demande = new Demandes();
+        dump($demande);
+        $form = $this->createForm(new DemandeAdminType(), $demande);
+        if ('POST' === $request->getMethod()) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                //$demande->setDateDemande(new \DateTime('now'));
+                //$demande->setDuration(4);
+                /*if($user instanceof Candidat)
+                {
+                    $demande->setCandidat($user);
+                }
+                elseif($user instanceof Entreprise)
+                {
+                    $demande->setEntreprise($user);
+                }*/
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($demande);
+                $em->flush();
+                return $this->redirectToRoute('fos_user_profile_show');
+            }
+        }
+        return $this->render('MainBundle:Admin:demande.html.twig', array(
             'form' => $form->createView()
         ));
     }

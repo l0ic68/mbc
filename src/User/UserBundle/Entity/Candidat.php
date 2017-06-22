@@ -63,6 +63,27 @@ class Candidat extends User
     private $codePostal;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_demande", type="string", length=255)
+     */
+    private $nomDemande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkedinlink", type="string", length=255)
+     */
+    private $linkedinLink;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description_demande", type="string", length=255)
+     */
+    private $descriptionDemande;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -277,4 +298,76 @@ class Candidat extends User
         $this->setUsername($email);
     }
 
+
+    /**
+     * Set nomDemande
+     *
+     * @param string $nomDemande
+     *
+     * @return Candidat
+     */
+    public function setNomDemande($nomDemande)
+    {
+        $this->nomDemande = $nomDemande;
+    
+        return $this;
+    }
+
+    /**
+     * Get nomDemande
+     *
+     * @return string
+     */
+    public function getNomDemande()
+    {
+        return $this->nomDemande;
+    }
+
+    /**
+     * Set linkedinLink
+     *
+     * @param string $linkedinLink
+     *
+     * @return Candidat
+     */
+    public function setLinkedinLink($linkedinLink)
+    {
+        $this->linkedinLink = $linkedinLink;
+    
+        return $this;
+    }
+
+    /**
+     * Get linkedinLink
+     *
+     * @return string
+     */
+    public function getLinkedinLink()
+    {
+        return $this->linkedinLink;
+    }
+
+    /**
+     * Set descriptionDemande
+     *
+     * @param string $descriptionDemande
+     *
+     * @return Candidat
+     */
+    public function setDescriptionDemande($descriptionDemande)
+    {
+        $this->descriptionDemande = $descriptionDemande;
+    
+        return $this;
+    }
+
+    /**
+     * Get descriptionDemande
+     *
+     * @return string
+     */
+    public function getDescriptionDemande()
+    {
+        return $this->descriptionDemande;
+    }
 }

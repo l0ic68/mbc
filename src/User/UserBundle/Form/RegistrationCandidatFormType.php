@@ -22,6 +22,11 @@ class RegistrationCandidatFormType extends AbstractType
                     'placeholder' => 'First name',)))
             ->add('phone')
             ->add('metier')
+            ->add('nom')
+            ->add('metier')
+            ->add('nomdemande')
+            ->add('descriptiondemande')
+            ->add('linkedinlink')
             ->add('adresse')
             ->add('codePostal')
             ->add('media', new MediaType(), array(
