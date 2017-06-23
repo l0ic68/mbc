@@ -47,7 +47,7 @@
           </div>
           <hr>
             {% if(app.user != null) %}
-	          <a href="{{ path('enquiryform', {'id': app.user.id }) }}" class="btn">Contactez la personne</a>
+	          <a href="{{ path('enquiryform', {'id': demande.user.id }) }}" class="btn">Contactez la personne</a>
           <hr>
             {% endif %}
             <div class="col m12">
