@@ -88,6 +88,6 @@ class DemandeType extends AbstractType
     }
     public function getName()
     {
-        return 'main_mainbundle_offre';
+        return 'main_mainbundle_demande';
     }
 }

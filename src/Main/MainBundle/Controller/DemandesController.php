@@ -44,7 +44,10 @@ class DemandesController extends Controller
 
     public function ajouterDemandeAction()
     {
-        return $this->render('MainBundle:Contact:contact.html.twig',array('form'=>$form->createView()));
+        $em = $this->getDoctrine()->getManager();
+        $demande = new Demandes();
+        $form= $this->createForm(new DemandeType(),$demande);
+        return $this->render('MainBundle:Default:Demandes\add_demandes.html.twig',array('form'=>$form->createView()));
     }
 
     public function searchDemandesAction()

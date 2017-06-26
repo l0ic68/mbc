@@ -97,10 +97,7 @@ class OffresController extends Controller
         $request = $this->container->get('request');
         $text = $request->query->get('text');
         $em = $this->getDoctrine()->getManager();
-
-
             $offres = $em->getRepository('MainBundle:Offres')->findByLocation($text);
-
         if($offres == null)
         {
             $offres = $em->getRepository('MainBundle:Offres')->findAll();

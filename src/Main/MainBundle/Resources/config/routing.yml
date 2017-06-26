@@ -62,15 +62,15 @@ add_offre:
 
 add_demande:
     path:     /add_demande
-    defaults: { _controller: MainBundle:OffreAdmin:add_demande }
+    defaults: { _controller: MainBundle:DemandeAdmin:add_demande }
 
 edit_demande:
     path:     /edit_offre/{id}
-    defaults: { _controller: MainBundle:OffreAdmin:edit_demande }
+    defaults: { _controller: MainBundle:DemandeAdmin:edit_demande }
 
 delete_demande:
     path:     /delete_offre/{id}
-    defaults: { _controller: MainBundle:OffreAdmin:delete_demande }
+    defaults: { _controller: MainBundle:DemandeAdmin:delete_demande }
 
 demandes:
     path:     /demandes

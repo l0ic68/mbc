@@ -18,12 +18,23 @@
     <p>PAGE 1</p>
     <a href="{{ path('retours', {'id': app.user.id }) }}" class="btn">regardez les retours de vos annonces (chiffre total de retours : x)</a>
     <p>PAGE 1</p>
+
     <a href="{{ path('add_demande')}}" class="waves-effect waves-light btn" style="width: 77px"><i class="material-icons">note_add</i></a>
 
+    <!-- Modal Trigger -->
+    <ul class="collapsible" data-collapsible="accordion">
+        <li>
+            <div class="collapsible-header"><i class="material-icons">note_add</i>Demande d'offre</div>
+            <div class="collapsible-body"><span>attention, les informations qui seront utilisées pour créer votre demande d'emploi sont vos informations personnelles de profil, êtes vous certain de vouloir publier votre demande</span></div>
+            <div class="collapsible-body"><span><a href ="{{  path('add_demande') }}">Oui</a></span></div>
+            <div class="collapsible-body"><span>Non </span></div>
+            <div class="collapsible-body"><span><a href ="{{  path('fos_user_profile_edit') }}">Modifier mes informations personnel</a></span></div>
+        </li>
+    </ul>
 
-    
-</div>
-<h4 class="gray marg-top bold">Vos annonces</h4>
+
+
+    <h4 class="gray marg-top bold">Vos demandes d'offres</h4>
     <table class="striped">
             <thead>
             <tr>
@@ -58,3 +69,9 @@
 </div>
 </div>
 </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+</script>
