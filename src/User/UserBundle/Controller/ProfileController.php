@@ -51,10 +51,10 @@ class ProfileController extends BaseController
 
             if($user instanceof Candidat)
             {
-                    $offres = $em->getRepository('MainBundle:Offres')->findByCandidat($user);
+                    $demandes = $em->getRepository('MainBundle:Demandes')->findByCandidat($user);
                     return $this->render('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
-            'offres' => $offres
+            'demandes' => $demandes
         ));
             }
             else if($user instanceof Entreprise)

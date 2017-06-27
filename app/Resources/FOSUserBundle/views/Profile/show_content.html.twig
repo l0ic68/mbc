@@ -42,19 +42,17 @@
                 <th>description</th>
                 <th>nombre de vues</th>
                 <th>Annonce postée le</th>
-                <th>pourcentage de satisfaction</th>
             </tr>
             </thead>
 
             <tbody>
-        {% for offre in offres %}
-            {% if offre.user.id == app.user.id %}
+        {% for demande in demandes %}
+            {% if demande.candidat.id == app.user.id %}
           <tr>
-            <td>{{offre.name}}</td>
-            <td>{{offre.description | slice(0, 30)}}</td>
-            <td>{{offre.price}}</td>
-            <td>{{offre.dateOffre|date("d/m/Y", "Europe/Paris")}}</td>
-            <td>N/A</td>
+            <td><a href="{{ path('demande', {'id': demande.id }) }}">{{demande.candidat.nom}}</a></td>
+            <td>{{demande.candidat.descriptionDemande | slice(0, 30)}}</td>
+            <td>{{demande.price}}</td>
+            <td>{{demande.dateDemande|date("d/m/Y", "Europe/Paris")}}</td>
             <td><a class="waves-effect waves-light btn" style="
     width: 77px"><i class="material-icons left">edit</i></a></td>
           </tr>

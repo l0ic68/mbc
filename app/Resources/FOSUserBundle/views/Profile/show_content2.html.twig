@@ -30,18 +30,16 @@
                 <th>description</th>
                 <th>nombre de vues</th>
                 <th>Annonce postée le</th>
-                <th>pourcentage de satisfaction</th>
             </tr>
             </thead>
 
             <tbody>
         {% for offre in offres %}
           <tr>
-            <td>{{ offre.name }}</td>
+            <td><a href="{{ path('offre', {'id': offre.id }) }}">{{ offre.name }}</a></td>
             <td>{{offre.description | slice(0, 30)}}</td>
             <td>{{offre.price}}</td>
             <td>{{offre.dateOffre|date("d/m/Y", "Europe/Paris")}}</td>
-            <td>N/A</td>
             <td><a href="{{ path('edit_offre',{id :  offre.id}) }}" class="waves-effect waves-light btn" style="
     width: 77px"><i class="material-icons left">edit</i></a></td>
             <td><a href="{{ path('delete_offre',{id :  offre.id}) }}" class="waves-effect waves-light btn" style="width: 77px"><i class="material-icons left">delete</i></a></td>

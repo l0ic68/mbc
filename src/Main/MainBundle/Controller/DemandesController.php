@@ -10,7 +10,7 @@ use User\UserBundle\Entity\Entreprise;
 use Main\MainBundle\Entity\Comments;
 use Main\MainBundle\Entity\Demandes;
 use Main\MainBundle\Form\ContactType;
-use Main\MainBundle\Form\DemandeType;
+use Main\MainBundle\Form\DemandesType;
 use Main\MainBundle\Form\MediaType;
 use Main\MainBundle\Repository\DemandesRepository;
 use Main\MainBundle\Repository\CommentsRepository;
@@ -28,7 +28,7 @@ class DemandesController extends Controller
         $em->flush();
         $medias = $em->getRepository('MainBundle:Demandes')->findByMedia($id);
         $user = $this->getUser();
-        $form = $this->createForm(new DemandeType());
+        $form = $this->createForm(new DemandesType());
         $form_Media = $this->createForm(new MediaType());
 
         return $this->render('MainBundle:Default:Demandes\demande.html.twig',array("demande"=> $demande,'form'=>$form->createView(),"medias"=>$medias,'form_Media'=>$form_Media->createView(),"user"=> $user));

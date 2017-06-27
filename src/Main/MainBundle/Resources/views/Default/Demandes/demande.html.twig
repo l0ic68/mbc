@@ -8,27 +8,27 @@
       <div class="row center">
         <div class="col m12 back-img white">
           <div>
-            <h4 class="gray marg-top bold">{{demande.user.nomdemande}}</h4>
+            <h4 class="gray marg-top bold">{{demande.candidat.nomdemande}}</h4>
             <div class="col m12">
               <div class="col m4">
                 <div class="col m12">
                   <img class="materialboxed z-depth-2 equipe circle img-center" data-caption="Nom prénom fonction" width="250" height="250" src="{{asset(demande.media.path)}}">
                 </div>
                 <div class="col m12 marg">
-                  <span class="bold">{{demande.user.nom}} {{demande.user.prenom}}</span>
+                  <span class="bold">{{demande.candidat.nom}} {{demande.candidat.prenom}}</span>
                 </div>
                 <div class="col m12">
-                  <span class="italic">{{demande.user.metier}}</span>
+                  <span class="italic">{{demande.candidat.metier}}</span>
                 </div>
                 <div class="col m12">
-                  <a href="{{demande.user.linkedinlink}}"> <img class="picto-in" src="{{ asset('img/picto/linkedin-letters.png') }}"> </a>
-                  <a href="{{demande.user.email}}"> <img class="picto-mail" src="{{ asset('img/picto/mail.png') }}"> </a>
+                  <a href="{{demande.candidat.linkedinlink}}"> <img class="picto-in" src="{{ asset('img/picto/linkedin-letters.png') }}"> </a>
+                  <a href="{{demande.candidat.email}}"> <img class="picto-mail" src="{{ asset('img/picto/mail.png') }}"> </a>
                 </div>
               </div>
               <div class="col m4">
               <div class="col m12 marg-bottom"></div>
               <div class="col m12">
-                <span class="bold" style="text-align: justify;">Bio :{{demande.user.descriptiondemande}}</span>
+                <span class="bold" style="text-align: justify;">Bio :{{demande.candidat.descriptiondemande}}</span>
             </div>
               </div>
               <div class="col m4">
@@ -47,27 +47,27 @@
           </div>
           <hr>
             {% if(app.user != null) %}
-	          <a href="{{ path('enquiryform', {'id': demande.user.id }) }}" class="btn">Contactez la personne</a>
+	          <a href="{{ path('enquiryform', {'id': demande.candidat.id }) }}" class="btn">Contactez la personne</a>
           <hr>
             {% endif %}
             <div class="col m12">
                 <h4 class="gray marg-top bold">Informations personnelles</h4>
             </div>
             <div class="col m12">
-                <span class="bold">nom:{{demande.user.nom}}</span>
-                <span class="bold">Prénom:{{demande.user.prenom}}</span>
+                <span class="bold">nom:{{demande.candidat.nom}}</span>
+                <span class="bold">Prénom:{{demande.candidat.prenom}}</span>
             </div>
             <div class="col s12 marg-bottom"></div>
             <div class="col m12">
-                <span class="bold">Téléphone :{{demande.user.phone}}</span>
+                <span class="bold">Téléphone :{{demande.candidat.phone}}</span>
                 </div>
                 <div class="col s12 marg-bottom"></div>
             <div class="col m12">
-                <span class="bold">Adresse :{{demande.user.adresse}}</span>
+                <span class="bold">Adresse :{{demande.candidat.adresse}}</span>
             </div>
             <div class="col s12 marg-bottom"></div>
             <div class="col m12">
-                <span class="bold">Code postal :{{demande.user.codepostal}}</span>
+                <span class="bold">Code postal :{{demande.candidat.codepostal}}</span>
             </div>
             <!--<div class="col m12">
                 <span class="bold">Bio :{#{demande.description}#}</span>
